@@ -1,14 +1,16 @@
 <div align="center">
   <br/>
   <h1 style="font-size: 45px; font-weight: bold; margin-bottom: 0;">Angel Conforme</h1>
-  <img src="https://readme-typing-svg.herokuapp.com?font=Montserrat&weight=600&size=22&duration=3000&pause=1000&color=2F80ED&center=true&vCenter=true&width=600&lines=Software+Engineering+Student;Building+Scalable+Solutions;Python+%7C+React+%7C+Firebase;Welcome+to+my+Dashboard" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Montserrat&weight=600&size=22&duration=3000&pause=1000&color=2F80ED&center=true&vCenter=true&width=600&lines=Software+Engineering+Student;Building+Scalable+Solutions;Python+%7C+React+%7C+Azure;Welcome+to+my+Dashboard" alt="Typing SVG" />
 </div>
 
 <div align="center">
-  <img src="https://media.giphy.com/media/coxQHKqG6qO9y/giphy.gif" width="200" alt="Coding Shark" />
+  <br/>
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/04de2e31234507.564a1d23645bf.gif" width="300" alt="coding animation" />
 </div>
 
 <div align="center">
+  <br/>
   <p style="font-size: 16px; color: #8b949e;">
    Estudiante de <b>Ingeniería de Software</b> en la <b>ULEAM</b> 🇪🇨.<br/>
    <i>"Transformando lógica en soluciones digitales."</i>
@@ -52,23 +54,27 @@
 <h2 align="center">💻 Tech Stack & Herramientas</h2>
 
 <div align="center">
-  <p><b>Lenguajes & Frontend</b></p>
+  <br/>
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=py,java,ts,js,html,css,react,tailwind&theme=dark" />
+    <img src="https://skillicons.dev/icons?i=react,angular,html,css,tailwind,ts,js&theme=dark" />
   </a>
   
   <br/><br/>
   
-  <p><b>Backend, Cloud & Bases de Datos</b></p>
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=nodejs,express,firebase,supabase,postgres,mongo&theme=dark" />
+    <img src="https://skillicons.dev/icons?i=py,java,nodejs,nestjs,express,graphql&theme=dark" />
   </a>
   
   <br/><br/>
 
-  <p><b>Herramientas & DevOps</b></p>
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=git,docker,postman,linux,vscode,github&theme=dark" />
+    <img src="https://skillicons.dev/icons?i=azure,docker,firebase,supabase,postgres,mongo,git&theme=dark" />
+  </a>
+
+  <br/><br/>
+  
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=linux,vscode,postman,github&theme=dark" />
   </a>
 </div>
 
