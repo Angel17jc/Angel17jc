@@ -1,0 +1,36 @@
+name: Generate Snake
+
+on:
+  # Se ejecuta automáticamente cada 12 horas
+  schedule:
+    - cron: "0 */12 * * *" 
+  
+  # Permite ejecutarlo manualmente
+  workflow_dispatch:
+  
+  # Se ejecuta en cada push a la rama main
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: Platane/snk@v3
+        with:
+          # Nombre de tu usuario de GitHub
+          github_user_name: ${{ github.repository_owner }}
+          # Estos son los archivos que genera (uno oscuro y uno claro)
+          outputs: |
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
+
+      - uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
