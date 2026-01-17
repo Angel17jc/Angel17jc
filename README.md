@@ -18,6 +18,17 @@
 </div>
 
 <div align="center">
+  <a href="mailto:anchundiaangel129@gmail.com" target="_blank">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="gmail"/>
+  </a>
+  <a href="https://www.linkedin.com/in/angel-joshue-conforme-anchundiaa-5258a42a4/" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="linkedin"/>
+  </a>
+</div>
+
+<br/>
+
+<div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=Angel17jc&show_icons=true&theme=transparent&hide_border=true&title_color=2F80ED&text_color=8b949e&icon_color=2F80ED" height="150" alt="stats graph" />
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Angel17jc&layout=compact&theme=transparent&hide_border=true&title_color=2F80ED&text_color=8b949e" height="150" alt="languages graph" />
 </div>
@@ -35,14 +46,4 @@
   <br/>
   
   <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" />
-  <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white" />
-  <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white" />
-  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" />
-  <img src="https://img.shields.io/badge/VS_Code-0078D4?style=flat-square&logo=visual%20studio%20code&logoColor=white" />
-</div>
-
-<br/>
-
-<div align="center">
-  <img src="https://github.com/Angel17jc/Angel17jc/blob/output/github-snake-dark.svg" alt="snake animation" width="100%"/>
-</div>
+  <img src="
