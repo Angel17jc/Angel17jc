@@ -1,43 +1,53 @@
 <div align="center">
-  <h1 style="font-size: 50px;">Angel Conforme</h1>
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=500&size=25&duration=3500&pause=1000&color=2F80ED&center=true&vCenter=true&width=500&lines=Estudiante+de+Software+@+ULEAM;Desarrollador+de+Software;Especializado+en+Python+y+React;Creando+soluciones+con+c%C3%B3digo" alt="Typing SVG" />
-</div>
-
-<div align="center">
   <br/>
-  👋 <b>¡Hola!</b>
-  <br/>
-  <br/>
-  Actualmente estoy cursando la carrera de <b>Software</b> en la<br/>
-  <b>Universidad Laica Eloy Alfaro de Manabí (ULEAM)</b> 🇪🇨.
-  <br/>
-  <br/>
-  <i>"El código es como el humor. Cuando tienes que explicarlo, es malo."</i>
-  <br/>
-  <br/>
+  <h1 style="font-size: 45px; font-weight: bold; margin-bottom: 0;">Angel Conforme</h1>
+  <img src="https://readme-typing-svg.herokuapp.com?font=Montserrat&weight=500&size=20&duration=3000&pause=1000&color=2F80ED&center=true&vCenter=true&width=500&lines=Software+Student+@+ULEAM;Building+Digital+Solutions;Welcome+to+my+Profile" alt="Typing SVG" />
 </div>
 
 <div align="center">
   <a href="mailto:anchundiaangel129@gmail.com" target="_blank">
-    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="gmail"/>
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white&labelColor=101010" alt="gmail"/>
   </a>
   <a href="https://www.linkedin.com/in/angel-joshue-conforme-anchundiaa-5258a42a4/" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="linkedin"/>
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=101010" alt="linkedin"/>
   </a>
 </div>
 
-<br/>
-
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Angel17jc&show_icons=true&theme=transparent&hide_border=true&title_color=2F80ED&text_color=8b949e&icon_color=2F80ED" height="150" alt="stats graph" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Angel17jc&theme=transparent&hide_border=true&fire=E25822&ring=2F80ED&currStreakNum=2F80ED" height="150" alt="streak graph" />
+  <br/>
+  <p style="font-size: 16px;">
+   Estudiante de <b>Ingeniería de Software</b> en la <b>ULEAM</b> 🇪🇨.<br/>
+   Transformando café ☕ en código limpio y eficiente.
+  </p>
 </div>
 
 <br/>
 
-### ⚡ Stack Tecnológico
+<div align="center">
+  <h3>🏆 Achievements</h3>
+  <img src="https://github-profile-trophy.vercel.app/?username=Angel17jc&theme=gitdimmed&no-frame=true&column=7&margin-w=15&margin-h=15" alt="trophies" />
+</div>
+
+<br/>
 
 <div align="center">
+  <h3>📊 Analytics</h3>
+  
+  <img src="https://github-readme-stats.vercel.app/api?username=Angel17jc&show_icons=true&theme=transparent&hide_border=true&title_color=2F80ED&text_color=8b949e&icon_color=2F80ED" height="155" alt="stats graph" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Angel17jc&theme=transparent&hide_border=true&fire=E25822&ring=2F80ED&currStreakNum=2F80ED" height="155" alt="streak graph" />
+  
+  <br/>
+  <br/>
+  
+  <img src="https://github.com/Angel17jc/Angel17jc/blob/main/profile-summary-card-output/2077/1-repos-per-language.svg" height="160" />
+  <img src="https://github.com/Angel17jc/Angel17jc/blob/main/profile-summary-card-output/2077/2-most-commit-language.svg" height="160" />
+</div>
+
+<br/>
+
+<div align="center">
+  <h3>🛠️ Tech Stack</h3>
+  
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white" />
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
@@ -70,12 +80,12 @@
   <img src="https://github.com/Angel17jc/Angel17jc/blob/output/github-snake-dark.svg" alt="snake animation" width="100%"/>
 </div>
 
-<hr/>
+<hr style="border-color: #30363d; opacity: 0.5;"/>
 
 <div align="center">
   <br/>
   <img src="https://readme-jokes.vercel.app/api?theme=dark&hide_border=true" width="400" />
   <br/>
   <br/>
-  <img src="https://komarev.com/ghpvc/?username=Angel17jc&label=Vistas+del+Perfil&color=2F80ED&style=flat" alt="profile views" />
+  <img src="https://komarev.com/ghpvc/?username=Angel17jc&label=Profile+Views&color=2F80ED&style=flat-square" alt="profile views" />
 </div>
