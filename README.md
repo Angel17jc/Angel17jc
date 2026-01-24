@@ -21,7 +21,7 @@
 
 <b>🚀 Enfoque Actual:</b><br/>
 • Arquitectura de Microservicios & Cloud<br/>
-• Desarrollo Backend & Full Stack<br/>
+• Desarrollo <br/>
 • DevOps (Docker & Azure)<br/>
 
 <br/>
