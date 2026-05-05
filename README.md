@@ -47,23 +47,7 @@ Busco oportunidades como desarrollador junior o pasante donde pueda aplicar mis 
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white"/>
 </a>
 
-</td>
 
-<td width="45%" valign="top" align="center">
-
-<img src="https://github-readme-stats.vercel.app/api?username=Angel17jc&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" width="100%"/>
-
-<br/>
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Angel17jc&layout=compact&theme=tokyonight&hide_border=true&langs_count=6" width="100%"/>
-
-</td>
-</tr>
-</table>
-
-<br/>
-<hr style="border-color: #30363d; opacity: 0.3;"/>
-<br/>
 
 <h2 align="center">💻 Tech Stack</h2>
 
