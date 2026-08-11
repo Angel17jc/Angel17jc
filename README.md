@@ -10,7 +10,8 @@
 
 <b>🚀 Enfoque Actual:</b>
 <ul>
-  <li>Desarrollo Frontend & Backend</li>
+  <li>Desarrollo Frontend & Backend (Full Stack)</li>
+  <li>Arquitectura de Microservicios & Cloud</li>
   <li>DevOps (Docker & Azure)</li>
 </ul>
 
@@ -18,6 +19,7 @@
 <ul>
   <li>Clean Architecture</li>
   <li>Docker & Contenedores</li>
+  <li>Microservicios con Python</li>
   <li>Azure Cloud</li>
 </ul>
 
