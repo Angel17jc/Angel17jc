@@ -70,7 +70,7 @@ creciendo como ingeniero de software.
 <tr>
 <td align="right"><b>⚙️ Backend</b></td>
 <td align="left">
-  <img src="https://skillicons.dev/icons?i=nodejs,nestjs,express,python,java,cs,dotnet&theme=dark" />
+  <img src="https://skillicons.dev/icons?i=nodejs,nestjs,express,python,java&theme=dark" />
 </td>
 </tr>
 
