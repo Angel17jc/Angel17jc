@@ -58,42 +58,35 @@ creciendo como ingeniero de software.
 
 <div align="center">
 
-<table border="0" cellspacing="5">
+<table border="0" cellspacing="8">
 
 <tr>
-<td align="right" width="130px"><b>Frontend</b></td>
+<td align="right" width="150px"><b>💻 Frontend</b></td>
 <td align="left">
   <img src="https://skillicons.dev/icons?i=react,angular,html,css,tailwind,js,ts,vite&theme=dark" />
 </td>
 </tr>
 
 <tr>
-<td align="right"><b>Backend</b></td>
+<td align="right"><b>⚙️ Backend</b></td>
 <td align="left">
   <img src="https://skillicons.dev/icons?i=nodejs,nestjs,express,python,java,cs,dotnet&theme=dark" />
 </td>
 </tr>
 
 <tr>
-<td align="right"><b>Languages</b></td>
-<td align="left">
-  <img src="https://skillicons.dev/icons?i=typescript,javascript,python,java,cs&theme=dark" />
-</td>
-</tr>
-
-<tr>
-<td align="right"><b>APIs & Real-Time</b></td>
+<td align="right"><b>🔗 APIs & Real-Time</b></td>
 <td align="left">
   <img src="https://skillicons.dev/icons?i=graphql&theme=dark" />
   &nbsp;
-  <img src="https://img.shields.io/badge/REST%20API-02569B?style=for-the-badge&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/REST%20API-85EA2D?style=for-the-badge&logo=swagger&logoColor=black" />
   <img src="https://img.shields.io/badge/Socket.IO-010101?style=for-the-badge&logo=socket.io&logoColor=white" />
   <img src="https://img.shields.io/badge/Apollo%20Server-311C87?style=for-the-badge&logo=apollographql&logoColor=white" />
 </td>
 </tr>
 
 <tr>
-<td align="right"><b>Databases</b></td>
+<td align="right"><b>🗄️ Databases</b></td>
 <td align="left">
   <img src="https://skillicons.dev/icons?i=postgres,mysql,mongodb,firebase&theme=dark" />
   <img src="https://skillicons.dev/icons?i=mssql&theme=dark" />
@@ -101,7 +94,7 @@ creciendo como ingeniero de software.
 </tr>
 
 <tr>
-<td align="right"><b>ORM & Data</b></td>
+<td align="right"><b>📦 ORM & Data</b></td>
 <td align="left">
   <img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white" />
   <img src="https://img.shields.io/badge/TypeORM-E83524?style=for-the-badge&logo=typeorm&logoColor=white" />
@@ -110,7 +103,7 @@ creciendo como ingeniero de software.
 </tr>
 
 <tr>
-<td align="right"><b>Cloud</b></td>
+<td align="right"><b>☁️ Cloud</b></td>
 <td align="left">
   <img src="https://skillicons.dev/icons?i=azure,firebase,supabase&theme=dark" />
   <img src="https://img.shields.io/badge/Neon-00E699?style=for-the-badge&logo=postgresql&logoColor=black" />
@@ -118,21 +111,21 @@ creciendo como ingeniero de software.
 </tr>
 
 <tr>
-<td align="right"><b>DevOps</b></td>
+<td align="right"><b>🐳 DevOps & CI/CD</b></td>
 <td align="left">
-  <img src="https://skillicons.dev/icons?i=docker,linux,git,github&theme=dark" />
+  <img src="https://skillicons.dev/icons?i=docker,linux,git,github,githubactions&theme=dark" />
 </td>
 </tr>
 
 <tr>
-<td align="right"><b>Development Tools</b></td>
+<td align="right"><b>🧰 Development Tools</b></td>
 <td align="left">
   <img src="https://skillicons.dev/icons?i=vscode,npm,postman,github&theme=dark" />
 </td>
 </tr>
 
 <tr>
-<td align="right"><b>Authentication & Security</b></td>
+<td align="right"><b>🔐 Auth & Security</b></td>
 <td align="left">
   <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white" />
   <img src="https://img.shields.io/badge/bcrypt-338033?style=for-the-badge&logo=letsencrypt&logoColor=white" />
