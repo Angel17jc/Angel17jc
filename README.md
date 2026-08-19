@@ -77,28 +77,25 @@ creciendo como ingeniero de software.
 <tr>
 <td align="right"><b>🔗 APIs & Real-Time</b></td>
 <td align="left">
-  <img src="https://skillicons.dev/icons?i=graphql&theme=dark" />
-  &nbsp;
-  <img src="https://img.shields.io/badge/REST%20API-85EA2D?style=for-the-badge&logo=swagger&logoColor=black" />
-  <img src="https://img.shields.io/badge/Socket.IO-010101?style=for-the-badge&logo=socket.io&logoColor=white" />
-  <img src="https://img.shields.io/badge/Apollo%20Server-311C87?style=for-the-badge&logo=apollographql&logoColor=white" />
+  <img src="https://skillicons.dev/icons?i=graphql,apollo&theme=dark" />
+  <img src="https://img.shields.io/badge/REST_API-85EA2D?style=flat-square&logo=swagger&logoColor=black&labelColor=1a1a2e" />
+  <img src="https://img.shields.io/badge/Socket.IO-010101?style=flat-square&logo=socket.io&logoColor=white&labelColor=1a1a2e" />
 </td>
 </tr>
 
 <tr>
 <td align="right"><b>🗄️ Databases</b></td>
 <td align="left">
-  <img src="https://skillicons.dev/icons?i=postgres,mysql,mongodb,firebase&theme=dark" />
-  <img src="https://skillicons.dev/icons?i=mssql&theme=dark" />
+  <img src="https://skillicons.dev/icons?i=postgres,mysql,mongodb,firebase,mssql&theme=dark" />
 </td>
 </tr>
 
 <tr>
 <td align="right"><b>📦 ORM & Data</b></td>
 <td align="left">
-  <img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white" />
-  <img src="https://img.shields.io/badge/TypeORM-E83524?style=for-the-badge&logo=typeorm&logoColor=white" />
-  <img src="https://img.shields.io/badge/PouchDB-E42528?style=for-the-badge&logo=pouchdb&logoColor=white" />
+  <img src="https://skillicons.dev/icons?i=prisma,sequelize&theme=dark" />
+  <img src="https://img.shields.io/badge/TypeORM-E83524?style=flat-square&logo=typeorm&logoColor=white&labelColor=1a1a2e" />
+  <img src="https://img.shields.io/badge/PouchDB-E42528?style=flat-square&logo=pouchdb&logoColor=white&labelColor=1a1a2e" />
 </td>
 </tr>
 
@@ -106,7 +103,7 @@ creciendo como ingeniero de software.
 <td align="right"><b>☁️ Cloud</b></td>
 <td align="left">
   <img src="https://skillicons.dev/icons?i=azure,firebase,supabase&theme=dark" />
-  <img src="https://img.shields.io/badge/Neon-00E699?style=for-the-badge&logo=postgresql&logoColor=black" />
+  <img src="https://img.shields.io/badge/Neon-00E699?style=flat-square&logo=postgresql&logoColor=black&labelColor=1a1a2e" />
 </td>
 </tr>
 
@@ -120,15 +117,15 @@ creciendo como ingeniero de software.
 <tr>
 <td align="right"><b>🧰 Development Tools</b></td>
 <td align="left">
-  <img src="https://skillicons.dev/icons?i=vscode,npm,postman,github&theme=dark" />
+  <img src="https://skillicons.dev/icons?i=vscode,npm,postman&theme=dark" />
 </td>
 </tr>
 
 <tr>
 <td align="right"><b>🔐 Auth & Security</b></td>
 <td align="left">
-  <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white" />
-  <img src="https://img.shields.io/badge/bcrypt-338033?style=for-the-badge&logo=letsencrypt&logoColor=white" />
+  <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white&labelColor=1a1a2e" />
+  <img src="https://img.shields.io/badge/bcrypt-338033?style=flat-square&logo=letsencrypt&logoColor=white&labelColor=1a1a2e" />
 </td>
 </tr>
 
