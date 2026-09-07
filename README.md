@@ -176,6 +176,20 @@ creciendo como ingeniero de software.
 
 <div align="center">
 
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/profile-summary-card-output/2077/3-stats.svg" alt="Resumen de estadisticas" />
+
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/profile-summary-card-output/2077/1-repos-per-language.svg" alt="Repos por lenguaje" height="200" />
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/profile-summary-card-output/2077/2-most-commit-language.svg" alt="Lenguaje mas usado en commits" height="200" />
+
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/profile-summary-card-output/2077/4-productive-time.svg" alt="Horario mas productivo" height="200" />
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/profile-summary-card-output/2077/0-profile-details.svg" alt="Detalles del perfil" height="200" />
+
+</div>
+
+<br/>
+
+<div align="center">
+
 <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/output/github-snake-dark.svg" width="100%" alt="snake"/>
 
 <br/><br/>
