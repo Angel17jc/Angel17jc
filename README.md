@@ -176,7 +176,7 @@ creciendo como ingeniero de software.
 
 <div align="center">
 
-<img src="https://github.com/Angel17jc/Angel17jc/blob/output/github-snake-dark.svg" width="100%" alt="snake"/>
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/output/github-snake-dark.svg" width="100%" alt="snake"/>
 
 <br/><br/>
 
