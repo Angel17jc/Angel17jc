@@ -37,7 +37,6 @@ aplicando buenas prácticas de ingeniería y desarrollo de aplicaciones modernas
 <ul>
   <li>Desarrollo Full Stack</li>
   <li>Backend & APIs</li>
-  <li>Arquitectura de Software</li>
   <li>Cloud & DevOps</li>
   <li>Bases de datos relacionales y NoSQL</li>
 </ul>
@@ -46,8 +45,6 @@ aplicando buenas prácticas de ingeniería y desarrollo de aplicaciones modernas
 
 <ul>
   <li>Clean Architecture</li>
-  <li>Arquitectura de software</li>
-  <li>Docker & Contenedores</li>
   <li>Cloud Computing con Azure</li>
   <li>Buenas prácticas de Backend y APIs</li>
 </ul>
@@ -64,6 +61,11 @@ creciendo como ingeniero de software.
 
 <h2>🛠️ Tech Stack</h2>
 
+<p>
+<b>Lo que uso en mis proyectos.</b> Cada tecnología de esta sección aparece en
+algún repositorio público de este perfil.
+</p>
+
 <div align="center">
 
 <table border="0" cellspacing="8">
@@ -71,69 +73,46 @@ creciendo como ingeniero de software.
 <tr>
 <td align="right" width="150px"><b>💻 Frontend</b></td>
 <td align="left">
-  <img src="https://skillicons.dev/icons?i=react,angular,html,css,tailwind,js,ts,vite&theme=dark" />
+  <img src="https://skillicons.dev/icons?i=ts,react,nextjs,tailwind,vite&theme=dark" />
 </td>
 </tr>
 
 <tr>
 <td align="right"><b>⚙️ Backend</b></td>
 <td align="left">
-  <img src="https://skillicons.dev/icons?i=nodejs,nestjs,express,python,java&theme=dark" />
+  <img src="https://skillicons.dev/icons?i=nodejs,nestjs,express,python&theme=dark" />
 </td>
 </tr>
 
 <tr>
-<td align="right"><b>🔗 APIs & Real-Time</b></td>
+<td align="right"><b>🔗 APIs</b></td>
 <td align="left">
-  <img src="https://skillicons.dev/icons?i=graphql,apollo&theme=dark" />
-  <img src="https://img.shields.io/badge/REST_API-85EA2D?style=flat-square&logo=swagger&logoColor=black&labelColor=1a1a2e" />
-  <img src="https://img.shields.io/badge/Socket.IO-010101?style=flat-square&logo=socket.io&logoColor=white&labelColor=1a1a2e" />
+  <img src="https://skillicons.dev/icons?i=graphql&theme=dark" />
+  <img src="https://img.shields.io/badge/REST-85EA2D?style=flat-square&logo=swagger&logoColor=black&labelColor=1a1a2e" />
+  <img src="https://img.shields.io/badge/WebSockets-010101?style=flat-square&logo=socket.io&logoColor=white&labelColor=1a1a2e" />
 </td>
 </tr>
 
 <tr>
-<td align="right"><b>🗄️ Databases</b></td>
+<td align="right"><b>🗄️ Datos</b></td>
 <td align="left">
-  <img src="https://skillicons.dev/icons?i=postgres,mysql,mongodb,firebase,mssql&theme=dark" />
-</td>
-</tr>
-
-<tr>
-<td align="right"><b>📦 ORM & Data</b></td>
-<td align="left">
-  <img src="https://skillicons.dev/icons?i=prisma,sequelize&theme=dark" />
+  <img src="https://skillicons.dev/icons?i=postgres,supabase,firebase&theme=dark" />
   <img src="https://img.shields.io/badge/TypeORM-E83524?style=flat-square&logo=typeorm&logoColor=white&labelColor=1a1a2e" />
-  <img src="https://img.shields.io/badge/PouchDB-E42528?style=flat-square&logo=pouchdb&logoColor=white&labelColor=1a1a2e" />
 </td>
 </tr>
 
 <tr>
-<td align="right"><b>☁️ Cloud</b></td>
+<td align="right"><b>🐳 DevOps</b></td>
 <td align="left">
-  <img src="https://skillicons.dev/icons?i=azure,firebase,supabase&theme=dark" />
-  <img src="https://img.shields.io/badge/Neon-00E699?style=flat-square&logo=postgresql&logoColor=black&labelColor=1a1a2e" />
+  <img src="https://skillicons.dev/icons?i=docker,git,githubactions,linux&theme=dark" />
 </td>
 </tr>
 
 <tr>
-<td align="right"><b>🐳 DevOps & CI/CD</b></td>
-<td align="left">
-  <img src="https://skillicons.dev/icons?i=docker,linux,git,github,githubactions&theme=dark" />
-</td>
-</tr>
-
-<tr>
-<td align="right"><b>🧰 Development Tools</b></td>
-<td align="left">
-  <img src="https://skillicons.dev/icons?i=vscode,npm,postman&theme=dark" />
-</td>
-</tr>
-
-<tr>
-<td align="right"><b>🔐 Auth & Security</b></td>
+<td align="right"><b>🔐 Auth</b></td>
 <td align="left">
   <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white&labelColor=1a1a2e" />
-  <img src="https://img.shields.io/badge/bcrypt-338033?style=flat-square&logo=letsencrypt&logoColor=white&labelColor=1a1a2e" />
+  <img src="https://img.shields.io/badge/Passport.js-34E27A?style=flat-square&logo=passport&logoColor=black&labelColor=1a1a2e" />
 </td>
 </tr>
 
@@ -141,32 +120,19 @@ creciendo como ingeniero de software.
 
 </div>
 
-<br/>
+<p>
+<b>También he trabajado con:</b>
+Java · Kotlin · Angular · MongoDB · MySQL · Azure
+</p>
 
-<h2>🏗️ Architecture & Development</h2>
-
-<div align="center">
-
-<img src="https://img.shields.io/badge/Clean%20Architecture-2F80ED?style=for-the-badge" />
-<img src="https://img.shields.io/badge/RESTful%20APIs-02569B?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Authentication-JWT-black?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Database%20Design-4479A1?style=for-the-badge" />
-
-</div>
-
-<br/>
-
-<h2>💼 What I Build</h2>
+<h2>💼 Qué construyo</h2>
 
 <ul>
-  <li>🌐 Full Stack Web Applications</li>
-  <li>⚙️ RESTful APIs & Backend Services</li>
-  <li>🔐 Authentication & Authorization Systems</li>
-  <li>🗄️ Database-driven Applications</li>
-  <li>📊 Business & Risk Management Systems</li>
-  <li>☁️ Cloud-based Applications</li>
-  <li>🐳 Containerized Applications with Docker</li>
-  <li>🔄 Real-time Applications with Socket.IO</li>
+  <li>🌐 <b>Sistemas full stack</b> con autenticación por roles — NestJS + TypeORM + PostgreSQL en el backend, React en el frontend</li>
+  <li>🧩 <b>Arquitecturas de microservicios</b> — servicios separados de auth, REST, GraphQL, pagos y websockets</li>
+  <li>🔄 <b>Aplicaciones en tiempo real</b> con WebSockets</li>
+  <li>📱 <b>Apps móviles nativas</b> en Kotlin</li>
+  <li>🐳 Todo <b>containerizado con Docker</b> y documentado</li>
 </ul>
 
 <br/>
