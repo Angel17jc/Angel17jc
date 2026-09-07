@@ -191,7 +191,11 @@ creciendo como ingeniero de software.
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/output/github-snake-dark.svg" width="100%" alt="snake"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Angel17jc/Angel17jc/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Angel17jc/Angel17jc/output/github-snake.svg" />
+  <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/output/github-snake-dark.svg" width="100%" alt="snake" />
+</picture>
 
 <br/><br/>
 
