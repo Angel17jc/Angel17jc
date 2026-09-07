@@ -140,7 +140,8 @@ creciendo como ingeniero de software.
 <div align="center">
 
 <img src="https://img.shields.io/badge/Clean%20Architecture-2F80ED?style=for-the-badge" />
-<img src="https://img.shields.io/badge/RESTful%20APIs-02569B?style=for-the-badge" /><img src="https://img.shields.io/badge/Authentication-JWT-black?style=for-the-badge" />
+<img src="https://img.shields.io/badge/RESTful%20APIs-02569B?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Authentication-JWT-black?style=for-the-badge" />
 <img src="https://img.shields.io/badge/Database%20Design-4479A1?style=for-the-badge" />
 
 </div>
