@@ -36,6 +36,7 @@ aplicando buenas prácticas de ingeniería y desarrollo de aplicaciones modernas
 
 <ul>
   <li>Desarrollo Full Stack</li>
+  <li>Frontend & UI</li>
   <li>Backend & APIs</li>
   <li>Cloud & DevOps</li>
   <li>Bases de datos relacionales y NoSQL</li>
@@ -60,11 +61,6 @@ creciendo como ingeniero de software.
 <br/>
 
 <h2>🛠️ Tech Stack</h2>
-
-<p>
-<b>Lo que uso en mis proyectos.</b> Cada tecnología de esta sección aparece en
-algún repositorio público de este perfil.
-</p>
 
 <div align="center">
 
@@ -120,10 +116,13 @@ algún repositorio público de este perfil.
 
 </div>
 
-<p>
-<b>También he trabajado con:</b>
-Java · Kotlin · Angular · MongoDB · MySQL · Azure
-</p>
+<div align="center">
+
+<p><b>También he trabajado con</b></p>
+
+<img src="https://skillicons.dev/icons?i=java,kotlin,angular,mongodb,mysql,azure&theme=dark" height="40" />
+
+</div>
 
 <h2>💼 Qué construyo</h2>
 
