@@ -6,6 +6,14 @@
 
 <br/>
 
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/banner.svg" width="100%" alt="Angel Conforme - Software Engineering Student" />
+
+</div>
+
+<br/>
+
 <h2>👨‍💻 Sobre mí</h2>
 
 <p>
