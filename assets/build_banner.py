@@ -187,21 +187,19 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
     <!-- CAPA 3 - brasas al frente (se mueven mas = quedan "cerca") -->
     <g fill="#ff5a3c">{EMBERS}</g>
 
-    <!-- texto -->
+    <!-- texto (sin el nombre: ya va en el h1 del README) -->
     <g filter="url(#textGlow)">
-      <text x="452" y="128" font-family="Verdana,DejaVu Sans,sans-serif" font-size="38"
-            font-weight="bold" fill="#ffffff" letter-spacing="1.8">ANGEL CONFORME
-        <animate attributeName="opacity" values=".82;1;.82" dur="4.6s" repeatCount="indefinite"/>
+      <text x="452" y="150" font-family="Verdana,DejaVu Sans,sans-serif" font-size="21"
+            font-weight="bold" fill="#ffffff" letter-spacing="2.2">SOFTWARE ENGINEERING STUDENT
+        <animate attributeName="opacity" values=".85;1;.85" dur="4.6s" repeatCount="indefinite"/>
       </text>
-      <text x="454" y="164" font-family="Verdana,DejaVu Sans,sans-serif" font-size="17"
-            fill="#ff4d4d" letter-spacing="4.5">SOFTWARE ENGINEERING STUDENT</text>
     </g>
-    <rect x="452" y="182" width="0" height="2" fill="#ff2f2f">
-      <animate attributeName="width" values="0;330;330;0" keyTimes="0;.35;.8;1"
+    <rect x="452" y="170" width="0" height="2" fill="#ff2f2f">
+      <animate attributeName="width" values="0;420;420;0" keyTimes="0;.35;.8;1"
                dur="6s" repeatCount="indefinite"/>
     </rect>
-    <text x="454" y="222" font-family="Verdana,DejaVu Sans,sans-serif" font-size="14"
-          fill="#c9b8b8" letter-spacing="1.2">Full Stack &#183; Backend &#183; Cloud &#183; DevOps</text>
+    <text x="454" y="202" font-family="Verdana,DejaVu Sans,sans-serif" font-size="14"
+          fill="#c9b8b8" letter-spacing="1.0">Frontend &#183; Backend &#183; Full Stack &#183; Cloud &#183; DevOps</text>
 
     <rect width="{W}" height="{H}" fill="url(#vignette)"/>
     <rect width="{W}" height="{H}" fill="none" stroke="#7a1414" stroke-width="2" rx="16"/>
