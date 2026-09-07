@@ -1,5 +1,5 @@
 <div align="center">
-  <h1 style="font-size: 50px;">Angel Conforme</h1>
+  <h1>Angel Conforme</h1>
 
   <img src="https://readme-typing-svg.demolab.com?font=Montserrat&weight=600&size=20&duration=3000&pause=1000&color=2F80ED&center=true&vCenter=true&width=600&lines=Software+Engineering+Student+%40+ULEAM;Full+Stack+Developer;Backend+%26+Cloud+Enthusiast;React+%7C+NestJS+%7C+TypeScript;Building+Scalable+Systems" alt="Typing SVG" />
 </div>
