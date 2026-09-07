@@ -7,11 +7,6 @@ on:
   
   # Permite ejecutarlo manualmente
   workflow_dispatch:
-  
-  # Se ejecuta en cada push a la rama main
-  push:
-    branches:
-    - main
 
 jobs:
   build:
