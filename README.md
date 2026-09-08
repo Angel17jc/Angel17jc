@@ -17,18 +17,32 @@
 <h2>👨‍💻 Sobre mí</h2>
 
 <p>
-¡Hola! Soy estudiante de <b>Ingeniería de Software</b> en la 
+¡Hola! Soy estudiante de <b>Ingeniería de Software</b> en la
 <b>Universidad Laica Eloy Alfaro de Manabí (ULEAM)</b> 🇪🇨.
 </p>
 
 <p>
-Lo que me interesa es el <b>diseño de sistemas</b>: cómo repartir responsabilidades
-entre servicios, dónde vive cada dato y qué pasa cuando dos usuarios hacen lo mismo
-a la vez. En <b><a href="https://github.com/Angel17jc/ReservasUleam2025">ReservasUleam</a></b>
-eso significó separar el backend en microservicios por dominio y resolver la doble
-reserva con validación de solapamiento; en
-<b><a href="https://github.com/Angel17jc/splitfair">SplitFair</a></b>, agregar la
-analítica en SQL en vez de en el cliente.
+No llegué aquí por vocación temprana: entré a la carrera sin tenerlo del todo
+claro y me enganché una vez dentro, cuando vi que programar iba menos de
+escribir líneas y más de <b>decidir cómo se organizan las cosas</b>.
+</p>
+
+<p>
+Esa sigue siendo mi parte favorita: pensar la estructura antes de escribir.
+Dónde va cada responsabilidad, qué aguanta si el proyecto crece, qué se rompe
+si nadie lo mira en seis meses. Me cuesta ponerme a teclear sin haber entendido
+primero la forma del problema.
+</p>
+
+<p>
+Dicho eso, <b>no me quedo en el diagrama</b>. Cuando hay que entregar, entrego:
+prefiero algo funcionando y bien pensado hoy que la versión perfecta el mes que
+viene. Entre planificar y sacarlo adelante, siempre gana sacarlo adelante.
+</p>
+
+<p>
+Fuera de la pantalla hago <b>deporte</b>, que compensa las horas de silla, y soy
+de <b>anime</b> — de ahí lo que ves ahí arriba.
 </p>
 
 <b>📖 Actualmente aprendiendo:</b>
