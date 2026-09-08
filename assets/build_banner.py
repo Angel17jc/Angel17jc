@@ -189,8 +189,8 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
 
     <!-- texto (sin el nombre: ya va en el h1 del README) -->
     <g filter="url(#textGlow)">
-      <text x="452" y="150" font-family="Verdana,DejaVu Sans,sans-serif" font-size="21"
-            font-weight="bold" fill="#ffffff" letter-spacing="2.2">SOFTWARE ENGINEERING STUDENT
+      <text x="452" y="150" font-family="Verdana,DejaVu Sans,sans-serif" font-size="29"
+            font-weight="bold" fill="#ffffff" letter-spacing="3.4">SOFTWARE DEVELOPER
         <animate attributeName="opacity" values=".85;1;.85" dur="4.6s" repeatCount="indefinite"/>
       </text>
     </g>
