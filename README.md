@@ -20,8 +20,6 @@
 ¡Hola! Soy <b>desarrollador de software</b> y estoy cursando el último semestre de
 <b>Ingeniería de Software</b> en la
 <b>Universidad Laica Eloy Alfaro de Manabí (ULEAM)</b> 🇪🇨.
-Entré como pasante en la empresa donde trabajo y me contrataron antes de
-terminar la carrera.
 </p>
 
 <p>
