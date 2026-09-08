@@ -53,16 +53,6 @@ de <b>anime</b> — de ahí lo que ves ahí arriba.
   <li>Buenas prácticas de Backend y APIs</li>
 </ul>
 
-<b>🎯 Objetivo Profesional:</b>
-
-<p>
-Busco oportunidades como <b>desarrollador junior o pasante</b> donde pueda
-aplicar mis conocimientos, participar en proyectos reales y continuar
-creciendo como ingeniero de software.
-</p>
-
-<br/>
-
 <h2>🛠️ Tech Stack</h2>
 
 <div align="center">
