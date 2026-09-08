@@ -42,8 +42,7 @@ viene. Entre planificar y sacarlo adelante, siempre gana sacarlo adelante.
 </p>
 
 <p>
-Fuera de la pantalla hago <b>deporte</b>, que compensa las horas de silla, y soy
-de <b>anime</b> — de ahí lo que ves ahí arriba.
+Fuera de la pantalla hago <b>deporte</b>, que compensa las horas de silla.
 </p>
 
 <b>📖 Actualmente aprendiendo:</b>
