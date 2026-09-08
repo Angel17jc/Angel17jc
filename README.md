@@ -1,7 +1,5 @@
 <div align="center">
   <h1>Angel Conforme</h1>
-
-  <img src="https://readme-typing-svg.demolab.com?font=Montserrat&weight=600&size=20&duration=3000&pause=1000&color=2F80ED&center=true&vCenter=true&width=600&lines=Software+Engineering+Student+%40+ULEAM;Full+Stack+Developer;Backend+%26+Cloud+Enthusiast;React+%7C+NestJS+%7C+TypeScript;Building+Scalable+Systems" alt="Typing SVG" />
 </div>
 
 <br/>
@@ -22,25 +20,12 @@
 </p>
 
 <p>
-Me apasiona aprender nuevas tecnologías y construir sistemas
-<b>bien estructurados, escalables y fáciles de mantener</b>.
+Lo que me interesa es el <b>diseño de sistemas</b>: cómo repartir responsabilidades
+entre servicios, dónde vive cada dato y qué pasa cuando dos usuarios hacen lo mismo
+a la vez. En <b>ReservasUleam</b> eso significó separar el backend en microservicios
+por dominio y resolver la doble reserva con validación de solapamiento; en
+<b>SplitFair</b>, agregar la analítica en SQL en vez de en el cliente.
 </p>
-
-<p>
-Actualmente estoy fortaleciendo mis habilidades en
-<b>desarrollo Full Stack, Backend, Cloud, DevOps y arquitectura de software</b>,
-aplicando buenas prácticas de ingeniería y desarrollo de aplicaciones modernas.
-</p>
-
-<b>🚀 Enfoque Actual:</b>
-
-<ul>
-  <li>Desarrollo Full Stack</li>
-  <li>Frontend & UI</li>
-  <li>Backend & APIs</li>
-  <li>Cloud & DevOps</li>
-  <li>Bases de datos relacionales y NoSQL</li>
-</ul>
 
 <b>📖 Actualmente aprendiendo:</b>
 
@@ -60,6 +45,74 @@ creciendo como ingeniero de software.
 
 <br/>
 
+<h2>🚀 Proyectos destacados</h2>
+
+<table>
+<tr>
+<td valign="top" width="50%">
+
+<h3><a href="https://github.com/Angel17jc/ReservasUleam2025">ReservasUleam</a></h3>
+
+<p>
+Plataforma de microservicios que centraliza la reserva de aulas y espacios
+de la universidad, donde antes el proceso era manual y por correo.
+</p>
+
+<ul>
+  <li>Doble reserva resuelta con <b>validación de solapamiento</b> y control transaccional</li>
+  <li>Disponibilidad consultable por <b>GraphQL</b>, con filtros de fecha, tipo y capacidad</li>
+  <li>Aprobaciones automatizadas con <b>n8n</b> y eventos entre servicios</li>
+  <li>Estado de cada reserva en vivo por <b>WebSocket</b></li>
+</ul>
+
+<p><sub>Python · GraphQL · WebSockets · PostgreSQL 16 · n8n · Docker Compose</sub></p>
+
+</td>
+<td valign="top" width="50%">
+
+<h3><a href="https://github.com/Angel17jc/splitfair">SplitFair</a></h3>
+
+<p>
+App para repartir gastos entre grupos (pisos compartidos, viajes) que calcula
+el <b>mínimo de pagos</b> que deja las cuentas a cero.
+</p>
+
+<ul>
+  <li>Cada grupo con su propia moneda y su propio saldo</li>
+  <li>Analítica agregada <b>en SQL</b>, no en el cliente: el listado va paginado y sumar dinero en coma flotante da totales que no cuadran</li>
+  <li>Autenticación con <b>Spring Security + JWT</b></li>
+</ul>
+
+<p><sub>Java 21 · Spring Boot 3 · JPA · React 18 · TypeScript · PostgreSQL · Docker</sub></p>
+
+</td>
+</tr>
+<tr>
+<td valign="top" width="50%">
+
+<h3><a href="https://github.com/Angel17jc/SleepWell">SleepWell</a></h3>
+
+<p>
+App Android nativa para registrar y analizar el sueño: duración, calidad,
+y qué factores lo alteran.
+</p>
+
+<ul>
+  <li>Estadísticas por día de la semana y mejores/peores noches</li>
+  <li>Análisis de factores: cafeína, ejercicio, pantalla y estrés</li>
+  <li>Validación de duplicados por fecha al guardar</li>
+  <li>Sensor de luz para registrar el ambiente de la noche</li>
+</ul>
+
+<p><sub>Kotlin · Jetpack Compose · Room · DataStore · Gradle</sub></p>
+
+</td>
+<td valign="top" width="50%"></td>
+</tr>
+</table>
+
+<br/>
+
 <h2>🛠️ Tech Stack</h2>
 
 <div align="center">
@@ -76,7 +129,7 @@ creciendo como ingeniero de software.
 <tr>
 <td align="right"><b>⚙️ Backend</b></td>
 <td align="left">
-  <img src="https://skillicons.dev/icons?i=nodejs,nestjs,express,python&theme=dark" />
+  <img src="https://skillicons.dev/icons?i=nodejs,nestjs,express,python,java,spring&theme=dark" />
 </td>
 </tr>
 
@@ -120,19 +173,9 @@ creciendo como ingeniero de software.
 
 <p><b>También he trabajado con</b></p>
 
-<img src="https://skillicons.dev/icons?i=java,kotlin,angular,mongodb,mysql,azure&theme=dark" height="40" />
+<img src="https://skillicons.dev/icons?i=kotlin,angular,mongodb,mysql,azure&theme=dark" height="40" />
 
 </div>
-
-<h2>💼 Qué construyo</h2>
-
-<ul>
-  <li>🌐 <b>Sistemas full stack</b> con autenticación por roles — NestJS + TypeORM + PostgreSQL en el backend, React en el frontend</li>
-  <li>🧩 <b>Arquitecturas de microservicios</b> — servicios separados de auth, REST, GraphQL, pagos y websockets</li>
-  <li>🔄 <b>Aplicaciones en tiempo real</b> con WebSockets</li>
-  <li>📱 <b>Apps móviles nativas</b> en Kotlin</li>
-  <li>🐳 Todo <b>containerizado con Docker</b> y documentado</li>
-</ul>
 
 <br/>
 
@@ -144,9 +187,6 @@ creciendo como ingeniero de software.
   <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/output/github-snake-dark.svg" width="100%" alt="snake" />
 </picture>
 
-<br/><br/>
-
-<img src="https://komarev.com/ghpvc/?username=Angel17jc&label=Vistas&color=2F80ED&style=flat-square" />
 
 </div>
 
