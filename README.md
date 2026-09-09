@@ -17,40 +17,36 @@
 <h2>👨‍💻 Sobre mí</h2>
 
 <p>
-¡Hola! Soy <b>desarrollador de software</b> y estoy cursando el último semestre de
-<b>Ingeniería de Software</b> en la
+¡Hola! Soy <b>Software Developer</b> y estudiante de <b>Ingeniería de Software</b> en la
 <b>Universidad Laica Eloy Alfaro de Manabí (ULEAM)</b> 🇪🇨.
 </p>
 
 <p>
-No llegué aquí por vocación temprana: entré a la carrera sin tenerlo del todo
-claro y me enganché una vez dentro, cuando vi que programar iba menos de
-escribir líneas y más de <b>decidir cómo se organizan las cosas</b>.
+Mi interés por el desarrollo de software fue creciendo a medida que descubrí que
+programar no se trata únicamente de escribir código, sino de entender problemas,
+diseñar soluciones y construir sistemas que puedan mantenerse y crecer con el tiempo.
 </p>
 
 <p>
-Esa sigue siendo mi parte favorita: pensar la estructura antes de escribir.
-Dónde va cada responsabilidad, qué aguanta si el proyecto crece, qué se rompe
-si nadie lo mira en seis meses. Me cuesta ponerme a teclear sin haber entendido
-primero la forma del problema.
+Una de las partes que más disfruto es pensar en la arquitectura antes de empezar a
+desarrollar: definir responsabilidades, organizar componentes y tomar decisiones que
+permitan que un proyecto sea más claro, escalable y fácil de mantener.
 </p>
 
 <p>
-Dicho eso, <b>no me quedo en el diagrama</b>. Cuando hay que entregar, entrego:
-prefiero algo funcionando y bien pensado hoy que la versión perfecta el mes que
-viene. Entre planificar y sacarlo adelante, siempre gana sacarlo adelante.
+También creo en llevar las ideas a la práctica. Me gusta transformar diseños y
+conceptos en software funcional, buscando un equilibrio entre una buena planificación
+y la capacidad de entregar resultados.
 </p>
 
-<p>
-Fuera de la pantalla hago <b>deporte</b>, que compensa las horas de silla.
-</p>
-
-<b>📖 Actualmente aprendiendo:</b>
+<b>🚀 Actualmente enfocado en:</b>
 
 <ul>
-  <li>Clean Architecture</li>
-  <li>Cloud Computing con Azure</li>
-  <li>Buenas prácticas de Backend y APIs</li>
+  <li><b>Frontend Development</b> — React, TypeScript, Vite y Tailwind CSS</li>
+  <li><b>Backend Development</b> — Node.js, NestJS y Express</li>
+  <li>APIs REST y arquitectura de aplicaciones</li>
+  <li><b>Bases de datos</b> — PostgreSQL y SQL</li>
+  <li>Clean Architecture y buenas prácticas de desarrollo</li>
 </ul>
 
 <h2>🛠️ Tech Stack</h2>
