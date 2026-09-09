@@ -18,6 +18,13 @@
     </filter>
   </defs>
 
+  <g>
+    <!-- flotacion suave: el mismo respirar que el retrato del banner -->
+    <animateTransform attributeName="transform" type="translate"
+                      values="0,0; 0,-3.5; 0,0" dur="5.5s"
+                      calcMode="spline" keyTimes="0;0.5;1"
+                      keySplines=".45 0 .55 1;.45 0 .55 1" repeatCount="indefinite"/>
+
   <!-- resplandor rojo latiendo por detras -->
   <text x="310" y="58" text-anchor="middle" filter="url(#soft)"
         font-family="Verdana,DejaVu Sans,sans-serif" font-size="42"
@@ -37,4 +44,5 @@
     <animate attributeName="x" values="310;130;130;310" keyTimes="0;.35;.8;1"
              dur="6s" repeatCount="indefinite"/>
   </rect>
+  </g>
 </svg>

@@ -61,6 +61,7 @@ def build_face(path):
     im = im.crop((left, top, left + side, top + side)).resize((512, 512), Image.LANCZOS)
 
     rgb = im.convert("RGB")
+    clean = rgb.copy()          # sin tintar: los ojos se detectan mejor aqui
     r, g, b = rgb.split()
 
     # "verdor" = cuanto supera G al mayor de R y B. Es ~0 en el pelo blanco,
@@ -90,7 +91,27 @@ def build_face(path):
     # donde habia hierba, ademas, se vuelve transparente
     mask = ImageChops.subtract(mask, green.point(lambda v: int(v * 0.85)))
     im.putalpha(mask)
-    return _b64(im, "PNG", optimize=True)
+    return _b64(im, "PNG", optimize=True), _find_eyes(clean)
+
+
+def _find_eyes(rgb):
+    """Localiza los ojos rojos en la cara ya recortada (512x512).
+
+    Busca pixeles con R alto y G/B bajos: en esta imagen solo los ojos
+    cumplen eso. Devuelve [(x, y), ...] en coordenadas de la imagen.
+    """
+    px = rgb.load()
+    pts = [(x, y) for y in range(0, 512, 2) for x in range(0, 512, 2)
+           if px[x, y][0] > 150 and px[x, y][1] < 85 and px[x, y][2] < 85]
+    if len(pts) < 6:
+        return []
+    mid = (min(p[0] for p in pts) + max(p[0] for p in pts)) / 2.0
+    out = []
+    for grp in ([p for p in pts if p[0] < mid], [p for p in pts if p[0] >= mid]):
+        if grp:
+            out.append((sum(p[0] for p in grp) / float(len(grp)),
+                        sum(p[1] for p in grp) / float(len(grp))))
+    return out
 
 
 SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -117,6 +138,24 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
       <stop offset="55%"  stop-color="#000" stop-opacity="0"/>
       <stop offset="100%" stop-color="#000" stop-opacity=".8"/>
     </radialGradient>
+
+    <!-- brillo de los ojos: blanco al rojo, se desvanece -->
+    <radialGradient id="eyeGlow">
+      <stop offset="0%"   stop-color="#fff0f0" stop-opacity=".95"/>
+      <stop offset="28%"  stop-color="#ff3b3b" stop-opacity=".75"/>
+      <stop offset="100%" stop-color="#ff0000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- barrido de brillo del titulo, igual que en el nombre -->
+    <linearGradient id="titleShine" gradientUnits="userSpaceOnUse" x1="150" y1="0" x2="410" y2="0">
+      <stop offset="0"    stop-color="#ffffff"/>
+      <stop offset="0.42" stop-color="#ffffff"/>
+      <stop offset="0.5"  stop-color="#ff7a7a"/>
+      <stop offset="0.58" stop-color="#ffffff"/>
+      <stop offset="1"    stop-color="#ffffff"/>
+      <animate attributeName="x1" from="150" to="1000" dur="5.2s" repeatCount="indefinite"/>
+      <animate attributeName="x2" from="410" to="1260" dur="5.2s" repeatCount="indefinite"/>
+    </linearGradient>
 
     <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
       <feGaussianBlur stdDeviation="7"/>
@@ -171,12 +210,21 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
         <circle cx="{FCX}" cy="{FCY}" r="{FRG}" fill="#ff1e1e" opacity=".30" filter="url(#soft)"/>
         <image xlink:href="{FACE}" clip-path="url(#face)"
                x="{FX}" y="{FY}" width="{FS}" height="{FS}"/>
+        <!-- ojos: laten con ritmo irregular, como brasas -->
+        <g clip-path="url(#face)">{EYES}</g>
         <!-- anillo exterior que gira y respira -->
         <circle cx="{FCX}" cy="{FCY}" r="{FRR}" fill="none" stroke="#ff2f2f"
                 stroke-width="2" stroke-dasharray="26 14" opacity=".8">
           <animateTransform attributeName="transform" type="rotate"
                             from="0 {FCX} {FCY}" to="360 {FCX} {FCY}"
                             dur="26s" repeatCount="indefinite"/>
+        </circle>
+        <!-- segundo anillo girando al reves: la contrarrotacion da profundidad -->
+        <circle cx="{FCX}" cy="{FCY}" r="{FRR2}" fill="none" stroke="#ff5a5a"
+                stroke-width="1" stroke-dasharray="4 12" opacity=".55">
+          <animateTransform attributeName="transform" type="rotate"
+                            from="360 {FCX} {FCY}" to="0 {FCX} {FCY}"
+                            dur="17s" repeatCount="indefinite"/>
         </circle>
         <circle cx="{FCX}" cy="{FCY}" r="{FR}" fill="none" stroke="#ff6b6b" stroke-width="1.4">
           <animate attributeName="opacity" values=".35;1;.35" dur="3.4s" repeatCount="indefinite"/>
@@ -190,7 +238,7 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
     <!-- texto (sin el nombre: ya va en el h1 del README) -->
     <g filter="url(#textGlow)">
       <text x="452" y="150" font-family="Verdana,DejaVu Sans,sans-serif" font-size="29"
-            font-weight="bold" fill="#ffffff" letter-spacing="3.4">SOFTWARE DEVELOPER
+            font-weight="bold" fill="url(#titleShine)" letter-spacing="3.4">SOFTWARE DEVELOPER
         <animate attributeName="opacity" values=".85;1;.85" dur="4.6s" repeatCount="indefinite"/>
       </text>
     </g>
@@ -223,22 +271,47 @@ def embers(n=13):
             '<circle cx="%d" cy="%d" r="%s" opacity="0">'
             '<animate attributeName="cy" values="%d;%d" dur="%ss" begin="%ss" repeatCount="indefinite"/>'
             '<animate attributeName="cx" values="%d;%d" dur="%ss" begin="%ss" repeatCount="indefinite"/>'
-            '<animate attributeName="opacity" values="0;.85;.6;0" dur="%ss" begin="%ss" repeatCount="indefinite"/>'
+            '<animate attributeName="opacity" values="0;.9;.35;.8;.2;0" dur="%ss" begin="%ss" repeatCount="indefinite"/>'
+            '<animate attributeName="r" values="%s;%s;%s" dur="%ss" begin="%ss" repeatCount="indefinite"/>'
             "</circle>"
-            % (x, H + 12, r, H + 12, -14, dur, delay, x, x + drift, dur, delay, dur, delay)
+            % (x, H + 12, r, H + 12, -14, dur, delay, x, x + drift, dur, delay, dur, delay,
+               r, round(r * 1.6, 1), r, round(dur / 3.0, 1), delay)
+        )
+    return "".join(out)
+
+
+def eyes_markup(eyes):
+    """Los ojos detectados (512x512) pasan a coordenadas del lienzo."""
+    scale = (FACE_R * 2) / 512.0
+    ox, oy = FACE_CX - FACE_R, FACE_CY - FACE_R
+    out = []
+    for i, (ex, ey) in enumerate(eyes):
+        cx, cy = ox + ex * scale, oy + ey * scale
+        # los dos ojos laten desfasados: parece vida, no un interruptor
+        begin = "0s" if i == 0 else "-1.1s"
+        out.append(
+            '<ellipse cx="%.1f" cy="%.1f" rx="11" ry="8.5" fill="url(#eyeGlow)">'
+            '<animate attributeName="opacity" values=".3;1;.45;.85;.3"'
+            ' keyTimes="0;.18;.42;.7;1" dur="2.6s" begin="%s" repeatCount="indefinite"/>'
+            '<animateTransform attributeName="transform" type="scale" additive="sum"'
+            ' values="1;1.35;1" dur="2.6s" begin="%s" repeatCount="indefinite"/>'
+            "</ellipse>" % (cx, cy, begin, begin)
         )
     return "".join(out)
 
 
 def main():
     bg_path, face_path, out_path = sys.argv[1], sys.argv[2], sys.argv[3]
+    face_uri, eyes = build_face(face_path)
+    print("   ojos detectados:", len(eyes))
     svg = SVG.format(
         W=W, H=H,
         BW=int(W * 1.15), BH=int(H * 1.15),
-        BG=build_bg(bg_path), FACE=build_face(face_path),
+        BG=build_bg(bg_path), FACE=face_uri,
         FCX=FACE_CX, FCY=FACE_CY, FR=FACE_R, FRG=FACE_R + 16, FRR=FACE_R + 11,
+        FRR2=FACE_R + 24,
         FX=FACE_CX - FACE_R, FY=FACE_CY - FACE_R, FS=FACE_R * 2,
-        EMBERS=embers(),
+        EYES=eyes_markup(eyes), EMBERS=embers(),
     )
     with io.open(out_path, "w", encoding="utf-8", newline="\n") as fh:
         fh.write(svg)
