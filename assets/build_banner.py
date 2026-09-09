@@ -16,6 +16,7 @@ from PIL import Image, ImageChops, ImageDraw, ImageFilter
 W, H = 1000, 320          # lienzo del banner
 FACE_R = 104              # radio del retrato circular
 FACE_CX, FACE_CY = 208, 160
+SURGE = 12.0              # cada cuantos segundos se dispara la descarga
 
 
 def _b64(img, fmt="JPEG", **kw):
@@ -175,6 +176,11 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
                         values="-38,-14; -8,-24; -38,-14" dur="19s"
                         calcMode="spline" keyTimes="0;0.5;1"
                         keySplines=".42 0 .58 1;.42 0 .58 1" repeatCount="indefinite"/>
+      <!-- zoom muy lento: la camara se acerca y se aleja, nunca se para -->
+      <animateTransform attributeName="transform" type="scale" additive="sum"
+                        values="1;1.045;1" dur="27s"
+                        calcMode="spline" keyTimes="0;0.5;1"
+                        keySplines=".42 0 .58 1;.42 0 .58 1" repeatCount="indefinite"/>
       <image xlink:href="{BG}" x="0" y="0" width="{BW}" height="{BH}"
              preserveAspectRatio="xMidYMid slice" opacity=".85"/>
     </g>
@@ -232,6 +238,13 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
       </g>
     </g>
 
+    <!-- descarga: ondas expansivas y arcos, solo visibles un instante cada ciclo -->
+    <g>{SHOCK}</g>
+    <g>{ARCS}</g>
+
+    <!-- chispas en orbita real alrededor del retrato (animateMotion) -->
+    <g>{SPARKS}</g>
+
     <!-- CAPA 3 - brasas al frente (se mueven mas = quedan "cerca") -->
     <g fill="#ff5a3c">{EMBERS}</g>
 
@@ -249,8 +262,17 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
     <text x="454" y="202" font-family="Verdana,DejaVu Sans,sans-serif" font-size="14"
           fill="#c9b8b8" letter-spacing="1.0">Frontend &#183; Backend &#183; Full Stack &#183; Cloud &#183; DevOps</text>
 
+    <!-- el fotograma entero se enciende una fraccion de segundo -->
+    <rect width="{W}" height="{H}" fill="#ff5252" opacity="0">
+      <animate attributeName="opacity" values="0;.14;0;0" keyTimes="0;.012;.07;1"
+               dur="{SURGE}s" repeatCount="indefinite"/>
+    </rect>
+
     <rect width="{W}" height="{H}" fill="url(#vignette)"/>
-    <rect width="{W}" height="{H}" fill="none" stroke="#7a1414" stroke-width="2" rx="16"/>
+    <rect width="{W}" height="{H}" fill="none" stroke="#7a1414" stroke-width="2" rx="16">
+      <animate attributeName="stroke" values="#7a1414;#ff4040;#7a1414;#7a1414"
+               keyTimes="0;.015;.12;1" dur="{SURGE}s" repeatCount="indefinite"/>
+    </rect>
   </g>
 </svg>
 """
@@ -280,6 +302,85 @@ def embers(n=13):
     return "".join(out)
 
 
+def shockwaves():
+    """Ondas expansivas que salen del retrato en cada descarga.
+
+    Duran una fraccion del ciclo: el resto del tiempo son invisibles, y eso
+    es justo lo que hace que se noten cuando aparecen.
+    """
+    out = []
+    for i, (delay, w) in enumerate(((0, 3.2), (-0.45, 2.0))):
+        out.append(
+            '<circle cx="%d" cy="%d" r="%d" fill="none" stroke="#ff3b3b"'
+            ' stroke-width="%s" opacity="0">'
+            '<animate attributeName="r" values="%d;%d;%d;%d" keyTimes="0;.015;.13;1"'
+            ' dur="%ss" begin="%ss" repeatCount="indefinite" calcMode="spline"'
+            ' keySplines="0 0 1 1;.12 .7 .3 1;0 0 1 1"/>'
+            '<animate attributeName="opacity" values="0;.9;0;0" keyTimes="0;.015;.13;1"'
+            ' dur="%ss" begin="%ss" repeatCount="indefinite"/>'
+            '<animate attributeName="stroke-width" values="%s;%s;.4;.4" keyTimes="0;.015;.13;1"'
+            ' dur="%ss" begin="%ss" repeatCount="indefinite"/>'
+            "</circle>"
+            % (FACE_CX, FACE_CY, FACE_R, w,
+               FACE_R, FACE_R, FACE_R + 145, FACE_R + 145, SURGE, delay,
+               SURGE, delay, w, w, SURGE, delay)
+        )
+    return "".join(out)
+
+
+def sparks(n=5):
+    """Chispas recorriendo una orbita real alrededor del retrato.
+
+    animateMotion sobre un path circular: cada una con su radio, su
+    velocidad y su punto de partida, para que no formen un patron.
+    """
+    import random
+    random.seed(13)
+    out = []
+    for i in range(n):
+        r = FACE_R + 14 + i * 7
+        dur = round(random.uniform(7.0, 15.0), 1)
+        begin = round(-random.uniform(0, dur), 1)
+        rad = round(random.uniform(1.4, 2.6), 1)
+        path = "M %d,%d A %d,%d 0 1,1 %d,%d A %d,%d 0 1,1 %d,%d" % (
+            FACE_CX, FACE_CY - r, r, r, FACE_CX, FACE_CY + r, r, r, FACE_CX, FACE_CY - r)
+        out.append(
+            '<circle r="%s" fill="#ffb08a" opacity=".9">'
+            '<animateMotion dur="%ss" begin="%ss" repeatCount="indefinite" path="%s"/>'
+            '<animate attributeName="opacity" values=".25;1;.4;.95;.25" dur="%ss"'
+            ' begin="%ss" repeatCount="indefinite"/>'
+            "</circle>" % (rad, dur, begin, path, round(dur / 2.5, 1), begin)
+        )
+    return "".join(out)
+
+
+def arcs(n=7):
+    """Arcos de energia dentados que solo aparecen en la descarga."""
+    import math
+    import random
+    random.seed(29)
+    out = []
+    for i in range(n):
+        a0 = random.uniform(0, math.pi * 2)
+        span = random.uniform(0.35, 0.85)
+        r0 = FACE_R + random.uniform(4, 26)
+        pts = []
+        steps = 6
+        for k in range(steps + 1):
+            a = a0 + span * k / float(steps)
+            rr = r0 + random.uniform(-9, 9)
+            pts.append("%.1f,%.1f" % (FACE_CX + rr * math.cos(a), FACE_CY + rr * math.sin(a)))
+        off = round(-random.uniform(0, 0.35), 2)
+        out.append(
+            '<polyline points="%s" fill="none" stroke="#ff8f6b" stroke-width="1.4"'
+            ' stroke-linecap="round" opacity="0">'
+            '<animate attributeName="opacity" values="0;.95;0;0" keyTimes="0;.012;.075;1"'
+            ' dur="%ss" begin="%ss" repeatCount="indefinite"/>'
+            "</polyline>" % (" ".join(pts), SURGE, off)
+        )
+    return "".join(out)
+
+
 def eyes_markup(eyes):
     """Los ojos detectados (512x512) pasan a coordenadas del lienzo."""
     scale = (FACE_R * 2) / 512.0
@@ -297,6 +398,13 @@ def eyes_markup(eyes):
             ' values="1;1.35;1" dur="2.6s" begin="%s" repeatCount="indefinite"/>'
             "</ellipse>" % (cx, cy, begin, begin)
         )
+        # destello: solo en la descarga, mucho mas grande y brillante
+        out.append(
+            '<ellipse cx="%.1f" cy="%.1f" rx="26" ry="20" fill="url(#eyeGlow)" opacity="0">'
+            '<animate attributeName="opacity" values="0;1;.15;0;0" keyTimes="0;.012;.06;.12;1"'
+            ' dur="%ss" repeatCount="indefinite"/>'
+            "</ellipse>" % (cx, cy, SURGE)
+        )
     return "".join(out)
 
 
@@ -312,6 +420,7 @@ def main():
         FRR2=FACE_R + 24,
         FX=FACE_CX - FACE_R, FY=FACE_CY - FACE_R, FS=FACE_R * 2,
         EYES=eyes_markup(eyes), EMBERS=embers(),
+        SHOCK=shockwaves(), SPARKS=sparks(), ARCS=arcs(), SURGE=SURGE,
     )
     with io.open(out_path, "w", encoding="utf-8", newline="\n") as fh:
         fh.write(svg)

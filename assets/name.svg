@@ -37,6 +37,14 @@
         font-family="Verdana,DejaVu Sans,sans-serif" font-size="42"
         font-weight="bold" letter-spacing="3" fill="url(#shine)">ANGEL CONFORME</text>
 
+  <!-- destello: mismo ciclo de 12s que la descarga del banner -->
+  <text x="310" y="58" text-anchor="middle" filter="url(#soft)"
+        font-family="Verdana,DejaVu Sans,sans-serif" font-size="42"
+        font-weight="bold" letter-spacing="3" fill="#ff6b6b" opacity="0">ANGEL CONFORME
+    <animate attributeName="opacity" values="0;.85;.1;0;0" keyTimes="0;.012;.06;.13;1"
+             dur="12s" repeatCount="indefinite"/>
+  </text>
+
   <!-- subrayado que se dibuja y se recoge -->
   <rect x="310" y="76" width="0" height="2" fill="#ff2f2f">
     <animate attributeName="width" values="0;360;360;0" keyTimes="0;.35;.8;1"
