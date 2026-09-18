@@ -1,3 +1,19 @@
+<style>
+  .profile-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 8px 0 0;
+  }
+  .profile-shell img {
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  .profile-shell img:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+  }
+</style>
+
+<div class="profile-shell">
 <div align="center">
 
 <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/name.svg" width="480" alt="Angel Conforme" />
@@ -141,5 +157,6 @@ y la capacidad de entregar resultados.
 </a>
 
 </p>
+</div>
 
 </div>
