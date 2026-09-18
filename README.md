@@ -1,9 +1,4 @@
 <style>
-  body {
-    background: #070b14;
-    color: #e5ecff;
-  }
-
   .profile-shell {
     max-width: 1100px;
     margin: 24px auto;
@@ -13,6 +8,7 @@
                 linear-gradient(180deg, rgba(15,23,42,0.92), rgba(9,13,24,0.96));
     border: 1px solid rgba(148, 163, 184, 0.17);
     box-shadow: 0 20px 45px rgba(15, 23, 42, 0.45);
+    color: #e5ecff;
     position: relative;
     overflow: hidden;
   }
@@ -38,13 +34,13 @@
     filter: drop-shadow(0 0 18px rgba(56, 189, 248, 0.42));
   }
 
-  .soft-divider {
+  .profile-shell .soft-divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(96,165,250,0.8), transparent);
     margin: 18px 0 10px;
   }
 
-  .focus-list {
+  .profile-shell .focus-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 12px;
@@ -53,7 +49,7 @@
     margin: 16px 0 24px;
   }
 
-  .focus-list li {
+  .profile-shell .focus-list li {
     background: rgba(15, 23, 42, 0.7);
     border: 1px solid rgba(96, 165, 250, 0.24);
     border-radius: 14px;
@@ -62,12 +58,12 @@
     transition: transform 0.2s ease, border-color 0.2s ease;
   }
 
-  .focus-list li:hover {
+  .profile-shell .focus-list li:hover {
     transform: translateY(-2px);
     border-color: rgba(125, 211, 252, 0.8);
   }
 
-  .tech-row {
+  .profile-shell .tech-row {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
@@ -76,7 +72,7 @@
     margin-top: 12px;
   }
 
-  .chip {
+  .profile-shell .chip {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -90,13 +86,13 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
 
-  .chip:hover {
+  .profile-shell .chip:hover {
     transform: translateY(-1px);
     border-color: rgba(96,165,250,0.8);
     box-shadow: 0 8px 22px rgba(59, 130, 246, 0.18);
   }
 
-  .contact-row {
+  .profile-shell .contact-row {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
@@ -104,12 +100,12 @@
     margin-top: 18px;
   }
 
-  .contact-row a {
+  .profile-shell .contact-row a {
     display: inline-block;
     transition: transform 0.2s ease, filter 0.2s ease;
   }
 
-  .contact-row a:hover {
+  .profile-shell .contact-row a:hover {
     transform: translateY(-2px) scale(1.02);
     filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.45));
   }
