@@ -47,6 +47,11 @@ funcional y buscando un equilibrio entre la planificación y la entrega de resul
   <li>Clean Architecture y buenas prácticas de desarrollo</li>
 </ul>
 
+<p>
+Estoy trabajando para combinar buen diseño de experiencia de usuario con una base sólida de backend,
+arquitectura y mantenibilidad.
+</p>
+
 <h2>🛠️ Tech Stack</h2>
 
 <div align="center">
@@ -111,6 +116,8 @@ funcional y buscando un equilibrio entre la planificación y la entrega de resul
 
 </div>
 
+<p align="center"><i>Explorando nuevas ideas, aprendiendo y construyendo soluciones con enfoque práctico.</i></p>
+
 <br/>
 
 <div align="center">
@@ -139,3 +146,5 @@ funcional y buscando un equilibrio entre la planificación y la entrega de resul
 </a>
 
 </p>
+
+<p><b>Siempre abierto a colaborar, aprender y crear proyectos con impacto.</b></p>
