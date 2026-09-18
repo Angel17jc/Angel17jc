@@ -9,9 +9,24 @@
     margin: 24px auto;
     padding: 20px 16px 40px;
     border-radius: 28px;
-    background: linear-gradient(180deg, rgba(15,23,42,0.88), rgba(9,13,24,0.92));
+    background: radial-gradient(circle at top, rgba(59,130,246,0.16), transparent 30%),
+                linear-gradient(180deg, rgba(15,23,42,0.92), rgba(9,13,24,0.96));
     border: 1px solid rgba(148, 163, 184, 0.17);
     box-shadow: 0 20px 45px rgba(15, 23, 42, 0.45);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .profile-shell::before {
+    content: "";
+    position: absolute;
+    inset: -20% auto auto -10%;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56,189,248,0.28), transparent 60%);
+    filter: blur(18px);
+    pointer-events: none;
   }
 
   .profile-shell img {
@@ -27,6 +42,76 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(96,165,250,0.8), transparent);
     margin: 18px 0 10px;
+  }
+
+  .focus-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 24px;
+  }
+
+  .focus-list li {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(96, 165, 250, 0.24);
+    border-radius: 14px;
+    padding: 12px 14px;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.25);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .focus-list li:hover {
+    transform: translateY(-2px);
+    border-color: rgba(125, 211, 252, 0.8);
+  }
+
+  .tech-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    background: rgba(15, 23, 42, 0.72);
+    color: #dbeafe;
+    font-weight: 600;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .chip:hover {
+    transform: translateY(-1px);
+    border-color: rgba(96,165,250,0.8);
+    box-shadow: 0 8px 22px rgba(59, 130, 246, 0.18);
+  }
+
+  .contact-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 18px;
+  }
+
+  .contact-row a {
+    display: inline-block;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+
+  .contact-row a:hover {
+    transform: translateY(-2px) scale(1.02);
+    filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.45));
   }
 </style>
 
@@ -70,7 +155,7 @@ y la capacidad de entregar resultados.
 
   <b>🚀 Actualmente enfocado en:</b>
 
-  <ul>
+  <ul class="focus-list">
     <li><b>Frontend Development</b> — React, TypeScript, Vite y Tailwind CSS</li>
     <li><b>Backend Development</b> — Node.js, NestJS y Express</li>
     <li>APIs REST y arquitectura de aplicaciones</li>
@@ -81,58 +166,46 @@ y la capacidad de entregar resultados.
   <h2>🛠️ Tech Stack</h2>
 
   <div align="center">
-    <table border="0" cellspacing="8">
-      <tr>
-        <td align="right" width="150px"><b>💻 Frontend</b></td>
-        <td align="left">
-          <img src="https://skillicons.dev/icons?i=ts,react,nextjs,tailwind,vite&theme=dark" />
-        </td>
-      </tr>
+    <div class="tech-row">
+      <span class="chip">💻 Frontend</span>
+      <img src="https://skillicons.dev/icons?i=ts,react,nextjs,tailwind,vite&theme=dark" />
+    </div>
 
-      <tr>
-        <td align="right"><b>⚙️ Backend</b></td>
-        <td align="left">
-          <img src="https://skillicons.dev/icons?i=nodejs,nestjs,express,python,java,spring&theme=dark" />
-        </td>
-      </tr>
+    <div class="tech-row">
+      <span class="chip">⚙️ Backend</span>
+      <img src="https://skillicons.dev/icons?i=nodejs,nestjs,express,python,java,spring&theme=dark" />
+    </div>
 
-      <tr>
-        <td align="right"><b>🔗 APIs</b></td>
-        <td align="left">
-          <img src="https://skillicons.dev/icons?i=graphql&theme=dark" />
-          <img src="https://img.shields.io/badge/REST-85EA2D?style=flat-square&logo=swagger&logoColor=black&labelColor=1a1a2e" />
-          <img src="https://img.shields.io/badge/WebSockets-010101?style=flat-square&logo=socket.io&logoColor=white&labelColor=1a1a2e" />
-        </td>
-      </tr>
+    <div class="tech-row">
+      <span class="chip">🔗 APIs</span>
+      <img src="https://skillicons.dev/icons?i=graphql&theme=dark" />
+      <img src="https://img.shields.io/badge/REST-85EA2D?style=flat-square&logo=swagger&logoColor=black&labelColor=1a1a2e" />
+      <img src="https://img.shields.io/badge/WebSockets-010101?style=flat-square&logo=socket.io&logoColor=white&labelColor=1a1a2e" />
+    </div>
 
-      <tr>
-        <td align="right"><b>🗄️ Datos</b></td>
-        <td align="left">
-          <img src="https://skillicons.dev/icons?i=postgres,supabase,firebase&theme=dark" />
-          <img src="https://img.shields.io/badge/TypeORM-E83524?style=flat-square&logo=typeorm&logoColor=white&labelColor=1a1a2e" />
-        </td>
-      </tr>
+    <div class="tech-row">
+      <span class="chip">🗄️ Datos</span>
+      <img src="https://skillicons.dev/icons?i=postgres,supabase,firebase&theme=dark" />
+      <img src="https://img.shields.io/badge/TypeORM-E83524?style=flat-square&logo=typeorm&logoColor=white&labelColor=1a1a2e" />
+    </div>
 
-      <tr>
-        <td align="right"><b>🐳 DevOps</b></td>
-        <td align="left">
-          <img src="https://skillicons.dev/icons?i=docker,git,githubactions,linux&theme=dark" />
-        </td>
-      </tr>
+    <div class="tech-row">
+      <span class="chip">🐳 DevOps</span>
+      <img src="https://skillicons.dev/icons?i=docker,git,githubactions,linux&theme=dark" />
+    </div>
 
-      <tr>
-        <td align="right"><b>🔐 Auth</b></td>
-        <td align="left">
-          <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white&labelColor=1a1a2e" />
-          <img src="https://img.shields.io/badge/Passport.js-34E27A?style=flat-square&logo=passport&logoColor=black&labelColor=1a1a2e" />
-        </td>
-      </tr>
-    </table>
+    <div class="tech-row">
+      <span class="chip">🔐 Auth</span>
+      <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white&labelColor=1a1a2e" />
+      <img src="https://img.shields.io/badge/Passport.js-34E27A?style=flat-square&logo=passport&logoColor=black&labelColor=1a1a2e" />
+    </div>
   </div>
 
   <div align="center">
     <p><b>También he trabajado con</b></p>
-    <img src="https://skillicons.dev/icons?i=kotlin,angular,mongodb,mysql,azure&theme=dark" height="40" />
+    <div class="tech-row">
+      <img src="https://skillicons.dev/icons?i=kotlin,angular,mongodb,mysql,azure&theme=dark" height="40" />
+    </div>
   </div>
 
   <br/>
@@ -149,7 +222,7 @@ y la capacidad de entregar resultados.
 
   <h2>📫 Contacto</h2>
 
-  <p>
+  <div class="contact-row">
     <a href="mailto:anchundiaangel129@gmail.com">
       <img src="https://img.shields.io/badge/Gmail-D14836?style=flat-square&logo=gmail&logoColor=white"/>
     </a>
@@ -157,5 +230,5 @@ y la capacidad de entregar resultados.
     <a href="https://www.linkedin.com/in/angel-joshue-conforme-anchundiaa-5258a42a4/" target="_blank">
       <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin"/>
     </a>
-  </p>
+  </div>
 </div>
