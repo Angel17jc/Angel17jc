@@ -22,21 +22,19 @@
 </p>
 
 <p>
-Mi interés por el desarrollo de software fue creciendo a medida que descubrí que
-programar no se trata únicamente de escribir código, sino de entender problemas,
-diseñar soluciones y construir sistemas que puedan mantenerse y crecer con el tiempo.
+Me interesa construir soluciones útiles, bien pensadas y fáciles de mantener.
+El desarrollo no es solo escribir código: también es entender el problema,
+diseñar la arquitectura y entregar algo que pueda crecer con el tiempo.
 </p>
 
 <p>
-Una de las partes que más disfruto es pensar en la arquitectura antes de empezar a
-desarrollar: definir responsabilidades, organizar componentes y tomar decisiones que
-permitan que un proyecto sea más claro, escalable y fácil de mantener.
+Disfruto especialmente pensar antes de codificar: definir responsabilidades,
+organizar componentes y elegir decisiones que hagan el proyecto más claro y escalable.
 </p>
 
 <p>
-También creo en llevar las ideas a la práctica. Me gusta transformar diseños y
-conceptos en software funcional, buscando un equilibrio entre una buena planificación
-y la capacidad de entregar resultados.
+También me gusta llevar las ideas a la práctica, transformando conceptos en software
+funcional y buscando un equilibrio entre la planificación y la entrega de resultados.
 </p>
 
 <b>🚀 Actualmente enfocado en:</b>
