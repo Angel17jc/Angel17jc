@@ -14,7 +14,7 @@
 
 <br/>
 
-<h2>👨‍💻 Sobre mí</h2>
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/title-sobre-mi.svg" height="48" alt="Sobre mí" />
 
 <p>
 ¡Hola! Soy <b>Software Developer</b> y estudiante de <b>Ingeniería de Software</b> en la
@@ -52,7 +52,7 @@ Estoy trabajando para combinar buen diseño de experiencia de usuario con una ba
 arquitectura y mantenibilidad.
 </p>
 
-<h2>🛠️ Tech Stack</h2>
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/title-tech-stack.svg" height="48" alt="Tech Stack" />
 
 <div align="center">
 
@@ -133,7 +133,7 @@ arquitectura y mantenibilidad.
 
 <br/>
 
-<h2>📫 Contacto</h2>
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/title-contacto.svg" height="48" alt="Contacto" />
 
 <p>
 
