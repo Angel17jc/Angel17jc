@@ -1,11 +1,11 @@
 name: Generate Snake
 
 on:
-  # Se ejecuta automáticamente cada 12 horas
+  # Runs automatically every 12 hours
   schedule:
     - cron: "0 */12 * * *" 
   
-  # Permite ejecutarlo manualmente
+  # Allows running it manually
   workflow_dispatch:
 
 concurrency:
@@ -22,9 +22,9 @@ jobs:
       
       - uses: Platane/snk@v3
         with:
-          # Nombre de tu usuario de GitHub
+          # Your GitHub username
           github_user_name: ${{ github.repository_owner }}
-          # Estos son los archivos que genera (uno oscuro y uno claro)
+          # Files it generates (one dark, one light)
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark

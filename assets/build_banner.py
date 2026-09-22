@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Genera assets/banner.svg: banner animado con efecto pseudo-3D.
+"""Builds assets/banner.svg: animated banner with a pseudo-3D effect.
 
-Uso:  python build_banner.py <fondo.png> <personaje.png> <salida.svg>
+Usage:  python build_banner.py <background.png> <character.png> <output.svg>
 
-El PNG se incrusta como data URI porque GitHub (camo) bloquea las
-referencias externas dentro de un SVG. La animacion usa SMIL, que es lo
-que ya funciona en el README (readme-typing-svg).
+The PNG is embedded as a data URI because GitHub (camo) blocks external
+references inside an SVG. The animation uses SMIL, which is what already
+works in the README (readme-typing-svg).
 """
 import base64
 import io
@@ -13,10 +13,10 @@ import sys
 
 from PIL import Image, ImageChops, ImageDraw, ImageFilter
 
-W, H = 1000, 320          # lienzo del banner
-FACE_R = 104              # radio del retrato circular
+W, H = 1000, 320          # banner canvas
+FACE_R = 104              # radius of the circular portrait
 FACE_CX, FACE_CY = 208, 160
-SURGE = 12.0              # cada cuantos segundos se dispara la descarga
+SURGE = 12.0              # how often (seconds) the surge fires
 
 
 def _b64(img, fmt="JPEG", **kw):
@@ -27,32 +27,32 @@ def _b64(img, fmt="JPEG", **kw):
 
 
 def build_bg(path):
-    """Fondo: recorte apaisado, oscurecido y algo desenfocado (da profundidad)."""
+    """Background: landscape crop, darkened and slightly blurred (adds depth)."""
     im = Image.open(path).convert("RGB")
-    # recorte central con la proporcion del banner, un 15% mas ancho para el parallax
+    # center crop with the banner ratio, 15% wider for the parallax
     tw, th = int(W * 1.15), int(H * 1.15)
     scale = max(tw / im.width, th / im.height)
     im = im.resize((max(1, int(im.width * scale)), max(1, int(im.height * scale))), Image.LANCZOS)
     left = (im.width - tw) // 2
-    top = int((im.height - th) * BG_FOCUS_Y)    # banda del ojo/colmillos
+    top = int((im.height - th) * BG_FOCUS_Y)    # eye/fangs band
     im = im.crop((left, top, left + tw, top + th))
     im = im.filter(ImageFilter.GaussianBlur(1.6))
-    im = Image.eval(im, lambda v: int(v * BG_DARKEN))   # que no pelee con el texto
+    im = Image.eval(im, lambda v: int(v * BG_DARKEN))   # so it does not fight with the text
     return _b64(im, "JPEG", quality=78, optimize=True)
 
 
-BG_FOCUS_Y = 0.62         # que banda vertical del fondo se recorta, 0..1
-BG_DARKEN = 0.50          # cuanto se oscurece el fondo
-FACE_ZOOM = 0.72          # fraccion del lado menor que se recorta (menos = mas zoom)
-FACE_FOCUS_X = 0.50       # centro del recorte, 0..1
+BG_FOCUS_Y = 0.62         # which vertical band of the background is cropped, 0..1
+BG_DARKEN = 0.50          # how much the background is darkened
+FACE_ZOOM = 0.72          # fraction of the shorter side that is cropped (less = more zoom)
+FACE_FOCUS_X = 0.50       # crop center, 0..1
 FACE_FOCUS_Y = 0.32
 
 
 def build_face(path):
-    """Personaje: recorte a la cara, tinte calido y desvanecido radial.
+    """Character: crop to the face, warm tint and radial fade.
 
-    El desvanecido evita el borde duro del circulo: el fondo verde del
-    original se disuelve en negro y el personaje parece emerger.
+    The fade avoids the hard edge of the circle: the green background of
+    the original dissolves into black and the character seems to emerge.
     """
     im = Image.open(path).convert("RGBA")
     side = int(min(im.width, im.height) * FACE_ZOOM)
@@ -62,44 +62,44 @@ def build_face(path):
     im = im.crop((left, top, left + side, top + side)).resize((512, 512), Image.LANCZOS)
 
     rgb = im.convert("RGB")
-    clean = rgb.copy()          # sin tintar: los ojos se detectan mejor aqui
+    clean = rgb.copy()          # untinted: eyes are easier to detect here
     r, g, b = rgb.split()
 
-    # "verdor" = cuanto supera G al mayor de R y B. Es ~0 en el pelo blanco,
-    # la piel, los cuernos negros y los ojos rojos; alto solo en la hierba.
+    # "greenness" = how much G exceeds the max of R and B. It is ~0 on the white
+    # hair, skin, black horns and red eyes; high only on the grass.
     green = ImageChops.subtract(g, ImageChops.lighter(r, b))
     green = green.point(lambda v: min(255, int(v * 5.0)))
     green = green.filter(ImageFilter.GaussianBlur(1.5))
 
-    # la hierba se funde a rojo muy oscuro...
+    # the grass fades into very dark red...
     rgb = Image.composite(Image.new("RGB", (512, 512), (46, 8, 10)), rgb, green)
-    # ...y un tinte global suave une el personaje con la paleta del banner
+    # ...and a soft global tint ties the character to the banner palette
     rgb = Image.blend(rgb, Image.new("RGB", (512, 512), (110, 16, 18)), 0.16)
     rgb = Image.eval(rgb, lambda v: int(v * 0.92))
     im = rgb.convert("RGBA")
 
-    # alfa radial: opaco hasta el 58% del radio, transparente al 100%
+    # radial alpha: opaque up to 58% of the radius, transparent at 100%
     mask = Image.new("L", (512, 512), 0)
     d = ImageDraw.Draw(mask)
     steps = 64
     for i in range(steps, 0, -1):
-        f = i / float(steps)                      # 1.0 borde -> 0 centro
+        f = i / float(steps)                      # 1.0 edge -> 0 center
         r = 256 * f
-        t = max(0.0, 1 - (f - 0.58) / 0.42)      # acotado: evita base negativa
+        t = max(0.0, 1 - (f - 0.58) / 0.42)      # clamped: avoids a negative base
         a = 255 if f <= 0.58 else int(255 * t ** 1.5)
         d.ellipse((256 - r, 256 - r, 256 + r, 256 + r), fill=a)
     mask = mask.filter(ImageFilter.GaussianBlur(4))
-    # donde habia hierba, ademas, se vuelve transparente
+    # where there was grass, it also becomes transparent
     mask = ImageChops.subtract(mask, green.point(lambda v: int(v * 0.85)))
     im.putalpha(mask)
     return _b64(im, "PNG", optimize=True), _find_eyes(clean)
 
 
 def _find_eyes(rgb):
-    """Localiza los ojos rojos en la cara ya recortada (512x512).
+    """Finds the red eyes in the already cropped face (512x512).
 
-    Busca pixeles con R alto y G/B bajos: en esta imagen solo los ojos
-    cumplen eso. Devuelve [(x, y), ...] en coordenadas de la imagen.
+    Looks for pixels with high R and low G/B: in this image only the eyes
+    match. Returns [(x, y), ...] in image coordinates.
     """
     px = rgb.load()
     pts = [(x, y) for y in range(0, 512, 2) for x in range(0, 512, 2)
@@ -117,7 +117,7 @@ def _find_eyes(rgb):
 
 SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
      viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img"
-     aria-label="Angel Conforme - banner animado">
+     aria-label="Angel Conforme - animated banner">
   <title>Angel Conforme</title>
   <defs>
     <clipPath id="frame"><rect x="0" y="0" width="{W}" height="{H}" rx="16"/></clipPath>
@@ -140,14 +140,14 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
       <stop offset="100%" stop-color="#000" stop-opacity=".8"/>
     </radialGradient>
 
-    <!-- brillo de los ojos: blanco al rojo, se desvanece -->
+    <!-- eye glow: white to red, fading out -->
     <radialGradient id="eyeGlow">
       <stop offset="0%"   stop-color="#fff0f0" stop-opacity=".95"/>
       <stop offset="28%"  stop-color="#ff3b3b" stop-opacity=".75"/>
       <stop offset="100%" stop-color="#ff0000" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- barrido de brillo del titulo, igual que en el nombre -->
+    <!-- shine sweep over the title, same as the name -->
     <linearGradient id="titleShine" gradientUnits="userSpaceOnUse" x1="150" y1="0" x2="410" y2="0">
       <stop offset="0"    stop-color="#ffffff"/>
       <stop offset="0.42" stop-color="#ffffff"/>
@@ -170,13 +170,13 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
   <g clip-path="url(#frame)">
     <rect width="{W}" height="{H}" fill="#050202"/>
 
-    <!-- CAPA 1 - fondo con parallax lento (se mueve poco = queda "lejos") -->
+    <!-- LAYER 1 - background with slow parallax (moves little = feels "far") -->
     <g>
       <animateTransform attributeName="transform" type="translate"
                         values="-38,-14; -8,-24; -38,-14" dur="19s"
                         calcMode="spline" keyTimes="0;0.5;1"
                         keySplines=".42 0 .58 1;.42 0 .58 1" repeatCount="indefinite"/>
-      <!-- zoom muy lento: la camara se acerca y se aleja, nunca se para -->
+      <!-- very slow zoom: the camera moves in and out, never stops -->
       <animateTransform attributeName="transform" type="scale" additive="sum"
                         values="1;1.045;1" dur="27s"
                         calcMode="spline" keyTimes="0;0.5;1"
@@ -185,24 +185,24 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
              preserveAspectRatio="xMidYMid slice" opacity=".85"/>
     </g>
 
-    <!-- brasa que late detras del retrato -->
+    <!-- ember pulsing behind the portrait -->
     <ellipse cx="{FCX}" cy="{FCY}" rx="190" ry="150" fill="url(#emberGlow)">
       <animate attributeName="opacity" values=".45;.9;.45" dur="3.4s" repeatCount="indefinite"/>
       <animateTransform attributeName="transform" type="scale" additive="sum"
                         values="1;1.07;1" dur="3.4s" repeatCount="indefinite"/>
     </ellipse>
 
-    <!-- degradado que separa el retrato del texto -->
+    <!-- gradient separating the portrait from the text -->
     <rect width="{W}" height="{H}" fill="url(#fade)"/>
 
-    <!-- CAPA 2 - retrato: flota y se inclina (pseudo rotacion en Y) -->
+    <!-- LAYER 2 - portrait: floats and tilts (fake Y rotation) -->
     <g>
-      <!-- flotacion vertical -->
+      <!-- vertical float -->
       <animateTransform attributeName="transform" type="translate"
                         values="0,0; 0,-9; 0,0" dur="5.5s"
                         calcMode="spline" keyTimes="0;0.5;1"
                         keySplines=".45 0 .55 1;.45 0 .55 1" repeatCount="indefinite"/>
-      <!-- inclinacion: escala horizontal + sesgo = giro 3D falso -->
+      <!-- tilt: horizontal scale + skew = fake 3D turn -->
       <g>
         <animateTransform attributeName="transform" type="matrix"
                           values="1,0,0,1,0,0;
@@ -216,16 +216,16 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
         <circle cx="{FCX}" cy="{FCY}" r="{FRG}" fill="#ff1e1e" opacity=".30" filter="url(#soft)"/>
         <image xlink:href="{FACE}" clip-path="url(#face)"
                x="{FX}" y="{FY}" width="{FS}" height="{FS}"/>
-        <!-- ojos: laten con ritmo irregular, como brasas -->
+        <!-- eyes: pulse with an irregular rhythm, like embers -->
         <g clip-path="url(#face)">{EYES}</g>
-        <!-- anillo exterior que gira y respira -->
+        <!-- outer ring that spins and breathes -->
         <circle cx="{FCX}" cy="{FCY}" r="{FRR}" fill="none" stroke="#ff2f2f"
                 stroke-width="2" stroke-dasharray="26 14" opacity=".8">
           <animateTransform attributeName="transform" type="rotate"
                             from="0 {FCX} {FCY}" to="360 {FCX} {FCY}"
                             dur="26s" repeatCount="indefinite"/>
         </circle>
-        <!-- segundo anillo girando al reves: la contrarrotacion da profundidad -->
+        <!-- second ring spinning the other way: counter-rotation adds depth -->
         <circle cx="{FCX}" cy="{FCY}" r="{FRR2}" fill="none" stroke="#ff5a5a"
                 stroke-width="1" stroke-dasharray="4 12" opacity=".55">
           <animateTransform attributeName="transform" type="rotate"
@@ -238,17 +238,17 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
       </g>
     </g>
 
-    <!-- descarga: ondas expansivas y arcos, solo visibles un instante cada ciclo -->
+    <!-- surge: shockwaves and arcs, visible only for an instant each cycle -->
     <g>{SHOCK}</g>
     <g>{ARCS}</g>
 
-    <!-- chispas en orbita real alrededor del retrato (animateMotion) -->
+    <!-- sparks in a real orbit around the portrait (animateMotion) -->
     <g>{SPARKS}</g>
 
-    <!-- CAPA 3 - brasas al frente (se mueven mas = quedan "cerca") -->
+    <!-- LAYER 3 - embers in front (move more = feel "close") -->
     <g fill="#ff5a3c">{EMBERS}</g>
 
-    <!-- texto (sin el nombre: ya va en el h1 del README) -->
+    <!-- text (without the name: it is already at the top of the README) -->
     <g filter="url(#textGlow)">
       <text x="452" y="150" font-family="Verdana,DejaVu Sans,sans-serif" font-size="29"
             font-weight="bold" fill="url(#titleShine)" letter-spacing="3.4">SOFTWARE DEVELOPER
@@ -262,7 +262,7 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
     <text x="454" y="202" font-family="Verdana,DejaVu Sans,sans-serif" font-size="14"
           fill="#c9b8b8" letter-spacing="1.0">Frontend &#183; Backend &#183; Full Stack &#183; Cloud &#183; DevOps</text>
 
-    <!-- el fotograma entero se enciende una fraccion de segundo -->
+    <!-- the whole frame lights up for a split second -->
     <rect width="{W}" height="{H}" fill="#ff5252" opacity="0">
       <animate attributeName="opacity" values="0;.14;0;0" keyTimes="0;.012;.07;1"
                dur="{SURGE}s" repeatCount="indefinite"/>
@@ -279,7 +279,7 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
 
 
 def embers(n=13):
-    """Brasas subiendo, cada una con su propio ritmo."""
+    """Rising embers, each with its own rhythm."""
     import random
     random.seed(7)
     out = []
@@ -303,10 +303,10 @@ def embers(n=13):
 
 
 def shockwaves():
-    """Ondas expansivas que salen del retrato en cada descarga.
+    """Shockwaves coming out of the portrait on every surge.
 
-    Duran una fraccion del ciclo: el resto del tiempo son invisibles, y eso
-    es justo lo que hace que se noten cuando aparecen.
+    They last a fraction of the cycle: the rest of the time they are
+    invisible, which is exactly what makes them stand out when they appear.
     """
     out = []
     for i, (delay, w) in enumerate(((0, 3.2), (-0.45, 2.0))):
@@ -329,10 +329,10 @@ def shockwaves():
 
 
 def sparks(n=5):
-    """Chispas recorriendo una orbita real alrededor del retrato.
+    """Sparks travelling a real orbit around the portrait.
 
-    animateMotion sobre un path circular: cada una con su radio, su
-    velocidad y su punto de partida, para que no formen un patron.
+    animateMotion over a circular path: each one with its own radius,
+    speed and starting point, so they do not form a pattern.
     """
     import random
     random.seed(13)
@@ -355,7 +355,7 @@ def sparks(n=5):
 
 
 def arcs(n=7):
-    """Arcos de energia dentados que solo aparecen en la descarga."""
+    """Jagged energy arcs that only appear during the surge."""
     import math
     import random
     random.seed(29)
@@ -382,13 +382,13 @@ def arcs(n=7):
 
 
 def eyes_markup(eyes):
-    """Los ojos detectados (512x512) pasan a coordenadas del lienzo."""
+    """Maps the detected eyes (512x512) to canvas coordinates."""
     scale = (FACE_R * 2) / 512.0
     ox, oy = FACE_CX - FACE_R, FACE_CY - FACE_R
     out = []
     for i, (ex, ey) in enumerate(eyes):
         cx, cy = ox + ex * scale, oy + ey * scale
-        # los dos ojos laten desfasados: parece vida, no un interruptor
+        # both eyes pulse out of phase: it feels alive, not like a switch
         begin = "0s" if i == 0 else "-1.1s"
         out.append(
             '<ellipse cx="%.1f" cy="%.1f" rx="11" ry="8.5" fill="url(#eyeGlow)">'
@@ -398,7 +398,7 @@ def eyes_markup(eyes):
             ' values="1;1.35;1" dur="2.6s" begin="%s" repeatCount="indefinite"/>'
             "</ellipse>" % (cx, cy, begin, begin)
         )
-        # destello: solo en la descarga, mucho mas grande y brillante
+        # flash: only during the surge, much bigger and brighter
         out.append(
             '<ellipse cx="%.1f" cy="%.1f" rx="26" ry="20" fill="url(#eyeGlow)" opacity="0">'
             '<animate attributeName="opacity" values="0;1;.15;0;0" keyTimes="0;.012;.06;.12;1"'
@@ -411,7 +411,7 @@ def eyes_markup(eyes):
 def main():
     bg_path, face_path, out_path = sys.argv[1], sys.argv[2], sys.argv[3]
     face_uri, eyes = build_face(face_path)
-    print("   ojos detectados:", len(eyes))
+    print("   eyes detected:", len(eyes))
     svg = SVG.format(
         W=W, H=H,
         BW=int(W * 1.15), BH=int(H * 1.15),
@@ -424,7 +424,7 @@ def main():
     )
     with io.open(out_path, "w", encoding="utf-8", newline="\n") as fh:
         fh.write(svg)
-    print("escrito %s  (%.0f KB)" % (out_path, len(svg.encode("utf-8")) / 1024.0))
+    print("written %s  (%.0f KB)" % (out_path, len(svg.encode("utf-8")) / 1024.0))
 
 
 if __name__ == "__main__":

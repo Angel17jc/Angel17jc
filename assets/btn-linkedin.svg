@@ -6,7 +6,7 @@
       <stop offset="0" stop-color="#1a0909"/>
       <stop offset="1" stop-color="#0a0404"/>
     </linearGradient>
-    <!-- barrido de brillo del texto, como en el nombre -->
+    <!-- shine sweep over the text, like the name -->
     <linearGradient id="shine" gradientUnits="userSpaceOnUse" x1="-200" y1="0" x2="-60" y2="0">
       <stop offset="0"    stop-color="#ffffff"/>
       <stop offset="0.42" stop-color="#ffffff"/>
@@ -24,13 +24,13 @@
 
   <rect x="1" y="1" width="218" height="50" rx="10" fill="url(#bg)"/>
 
-  <!-- borde base que se enciende con la descarga de 12s -->
+  <!-- base border that lights up with the 12s surge -->
   <rect x="1" y="1" width="218" height="50" rx="10" fill="none" stroke="#5a1414" stroke-width="1.5">
     <animate attributeName="stroke" values="#5a1414;#ff4040;#5a1414;#5a1414"
              keyTimes="0;.015;.12;1" dur="12s" repeatCount="indefinite"/>
   </rect>
 
-  <!-- luz que recorre el borde -->
+  <!-- light running along the border -->
   <rect x="1" y="1" width="218" height="50" rx="10" fill="none" stroke="#ff4d4d"
         stroke-width="2" pathLength="100" stroke-dasharray="16 84" stroke-linecap="round"
         filter="url(#glow)">
@@ -38,7 +38,7 @@
              begin="-1.8s" repeatCount="indefinite"/>
   </rect>
 
-  <!-- icono -->
+  <!-- icon -->
   <g transform="translate(22 14)" filter="url(#glow)">
     <animate attributeName="opacity" values=".75;1;.75" dur="3.4s" repeatCount="indefinite"/>
     <rect x="2" y="0" width="24" height="24" rx="5" fill="#ff2f2f"/>
@@ -49,7 +49,7 @@
   <text x="66" y="32" font-family="Verdana,DejaVu Sans,sans-serif" font-size="15"
         font-weight="bold" letter-spacing="2" fill="url(#shine)">LINKEDIN</text>
 
-  <!-- flecha que empuja hacia afuera -->
+  <!-- arrow nudging outwards -->
   <path d="M190 20 l6 6 l-6 6" fill="none" stroke="#ff4d4d" stroke-width="2.2"
         stroke-linecap="round" stroke-linejoin="round">
     <animateTransform attributeName="transform" type="translate"

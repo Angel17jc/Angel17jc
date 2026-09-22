@@ -15,7 +15,7 @@
       <stop offset="0" stop-color="#7a1414"/>
       <stop offset="1" stop-color="#ff4040"/>
     </linearGradient>
-    <!-- brillo que recorre las barras una vez llenas -->
+    <!-- shine running over the bars once filled -->
     <linearGradient id="sweep" gradientUnits="userSpaceOnUse" x1="330" y1="0" x2="490" y2="0">
       <stop offset="0"   stop-color="#fff0f0" stop-opacity="0"/>
       <stop offset=".5"  stop-color="#fff0f0" stop-opacity=".55"/>
@@ -40,7 +40,7 @@
   <g clip-path="url(#frame)">
     <rect width="900" height="250" fill="url(#bg)"/>
 
-    <!-- brasa que late detras de cada columna -->
+    <!-- ember pulsing behind each column -->
     <ellipse cx="200" cy="140" rx="260" ry="150" fill="url(#ember)">
       <animate attributeName="opacity" values=".5;1;.5" dur="3.4s" repeatCount="indefinite"/>
     </ellipse>
@@ -61,7 +61,7 @@
                dur="6s" begin="-3s" repeatCount="indefinite"/>
     </rect>
 
-    <!-- separador vertical -->
+    <!-- vertical divider -->
     <rect x="449.5" y="40" width="1" height="170" fill="#ff2f2f" opacity=".25"/>
 
     <g opacity="0" transform="translate(-12 0)">
@@ -166,7 +166,7 @@
                calcMode="spline" keyTimes="0;1" keySplines=".2 .7 .3 1"/>
     </rect>
 
-    <!-- el marco se enciende con la descarga de 12s del banner -->
+    <!-- the frame lights up with the banner 12s surge -->
     <rect width="900" height="250" fill="#ff5252" opacity="0">
       <animate attributeName="opacity" values="0;.08;0;0" keyTimes="0;.012;.07;1"
                dur="12s" repeatCount="indefinite"/>

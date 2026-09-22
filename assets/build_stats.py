@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Genera assets/stats.svg: tarjeta de estadisticas con el estilo del banner.
+"""Builds assets/stats.svg: stats card in the banner style.
 
-Uso:  GITHUB_TOKEN=... python build_stats.py <usuario> <salida.svg>
+Usage:  GITHUB_TOKEN=... python build_stats.py <user> <output.svg>
 
-Solo usa la libreria estandar para que el workflow no tenga que instalar
-nada. Las barras se llenan una vez al cargar (fill="freeze") y despues
-queda un brillo recorriendolas en bucle.
+Uses only the standard library so the workflow does not need to install
+anything. The bars fill once on load (fill="freeze") and then a shine
+keeps running over them in a loop.
 """
 import json
 import os
@@ -15,9 +15,9 @@ from xml.sax.saxutils import escape
 
 W, H = 900, 250
 TOP_LANGS = 5
-# lenguajes que inflan el porcentaje sin decir nada del stack
+# languages that inflate the percentage without saying anything about the stack
 EXCLUDE = {"HTML", "CSS", "SCSS", "Jupyter Notebook", "Batchfile", "Shell", "PowerShell", "Dockerfile"}
-# repos que no cuentan para los lenguajes (Examenmodelado trae un venv subido)
+# repos excluded from languages (Examenmodelado has a committed venv)
 EXCLUDE_REPOS = {"Examenmodelado", "Angel17jc"}
 
 QUERY = """
@@ -105,7 +105,7 @@ def lang_rows(langs):
     top = max((p for _, p in langs), default=1)
     for i, (name, pct) in enumerate(langs):
         y = 92 + i * 30
-        w = max(4.0, bar_w * pct / top)      # la barra mayor ocupa todo el ancho
+        w = max(4.0, bar_w * pct / top)      # the largest bar takes the full width
         begin = "%.2fs" % (0.4 + i * 0.15)
         rows.append(
             '<text x="490" y="{y}" class="lbl">{name}</text>\n'
@@ -139,7 +139,7 @@ TPL = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W
       <stop offset="0" stop-color="#7a1414"/>
       <stop offset="1" stop-color="#ff4040"/>
     </linearGradient>
-    <!-- brillo que recorre las barras una vez llenas -->
+    <!-- shine running over the bars once filled -->
     <linearGradient id="sweep" gradientUnits="userSpaceOnUse" x1="330" y1="0" x2="490" y2="0">
       <stop offset="0"   stop-color="#fff0f0" stop-opacity="0"/>
       <stop offset=".5"  stop-color="#fff0f0" stop-opacity=".55"/>
@@ -164,7 +164,7 @@ TPL = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W
   <g clip-path="url(#frame)">
     <rect width="{W}" height="{H}" fill="url(#bg)"/>
 
-    <!-- brasa que late detras de cada columna -->
+    <!-- ember pulsing behind each column -->
     <ellipse cx="200" cy="140" rx="260" ry="150" fill="url(#ember)">
       <animate attributeName="opacity" values=".5;1;.5" dur="3.4s" repeatCount="indefinite"/>
     </ellipse>
@@ -185,14 +185,14 @@ TPL = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W
                dur="6s" begin="-3s" repeatCount="indefinite"/>
     </rect>
 
-    <!-- separador vertical -->
+    <!-- vertical divider -->
     <rect x="449.5" y="40" width="1" height="{SEP}" fill="#ff2f2f" opacity=".25"/>
 
     {STATS}
 
     {LANGS}
 
-    <!-- el marco se enciende con la descarga de 12s del banner -->
+    <!-- the frame lights up with the banner 12s surge -->
     <rect width="{W}" height="{H}" fill="#ff5252" opacity="0">
       <animate attributeName="opacity" values="0;.08;0;0" keyTimes="0;.012;.07;1"
                dur="12s" repeatCount="indefinite"/>
@@ -208,7 +208,7 @@ TPL = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W
 
 def main():
     login, out = sys.argv[1], sys.argv[2]
-    token = os.environ.get("GITHUB_TOKEN") or sys.exit("falta GITHUB_TOKEN")
+    token = os.environ.get("GITHUB_TOKEN") or sys.exit("missing GITHUB_TOKEN")
     data = summarize(fetch(login, token))
     svg = TPL.format(W=W, H=H, SEP=H - 80,
                      STATS=stat_rows(data["stats"]), LANGS=lang_rows(data["langs"]))

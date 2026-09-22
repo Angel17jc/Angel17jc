@@ -1,14 +1,14 @@
 name: Generate Stats Card
 
 on:
-  # Se ejecuta automáticamente cada 24 horas
+  # Runs automatically every 24 hours
   schedule:
     - cron: "30 0 * * *"
 
-  # Permite ejecutarlo manualmente
+  # Allows running it manually
   workflow_dispatch:
 
-  # Regenera la tarjeta cuando cambia el script
+  # Rebuilds the card when the script changes
   push:
     branches: [main]
     paths:
@@ -26,15 +26,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generar assets/stats.svg
+      - name: Build assets/stats.svg
         run: python3 assets/build_stats.py "${{ github.repository_owner }}" assets/stats.svg
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Solo hace commit si los numeros cambiaron
+      # Only commits if the numbers changed
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/stats.svg
-          git diff --cached --quiet || (git commit -m "chore: actualizar stats.svg" && git push)
+          git diff --cached --quiet || (git commit -m "chore: update stats.svg" && git push)

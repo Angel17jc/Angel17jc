@@ -2,7 +2,7 @@
      role="img" aria-label="Angel Conforme">
   <title>Angel Conforme</title>
   <defs>
-    <!-- brillo que barre las letras de izquierda a derecha -->
+    <!-- shine sweeping the letters from left to right -->
     <linearGradient id="shine" gradientUnits="userSpaceOnUse" x1="-300" y1="0" x2="-40" y2="0">
       <stop offset="0"    stop-color="#ffffff"/>
       <stop offset="0.42" stop-color="#ffffff"/>
@@ -19,25 +19,25 @@
   </defs>
 
   <g>
-    <!-- flotacion suave: el mismo respirar que el retrato del banner -->
+    <!-- soft float: same breathing as the banner portrait -->
     <animateTransform attributeName="transform" type="translate"
                       values="0,0; 0,-3.5; 0,0" dur="5.5s"
                       calcMode="spline" keyTimes="0;0.5;1"
                       keySplines=".45 0 .55 1;.45 0 .55 1" repeatCount="indefinite"/>
 
-  <!-- resplandor rojo latiendo por detras -->
+  <!-- red glow pulsing behind -->
   <text x="310" y="58" text-anchor="middle" filter="url(#soft)"
         font-family="Verdana,DejaVu Sans,sans-serif" font-size="42"
         font-weight="bold" letter-spacing="3" fill="#ff1e1e" opacity=".45">ANGEL CONFORME
     <animate attributeName="opacity" values=".28;.7;.28" dur="3.4s" repeatCount="indefinite"/>
   </text>
 
-  <!-- nombre con el barrido de brillo -->
+  <!-- name with the shine sweep -->
   <text x="310" y="58" text-anchor="middle"
         font-family="Verdana,DejaVu Sans,sans-serif" font-size="42"
         font-weight="bold" letter-spacing="3" fill="url(#shine)">ANGEL CONFORME</text>
 
-  <!-- destello: mismo ciclo de 12s que la descarga del banner -->
+  <!-- flash: same 12s cycle as the banner surge -->
   <text x="310" y="58" text-anchor="middle" filter="url(#soft)"
         font-family="Verdana,DejaVu Sans,sans-serif" font-size="42"
         font-weight="bold" letter-spacing="3" fill="#ff6b6b" opacity="0">ANGEL CONFORME
@@ -45,7 +45,7 @@
              dur="12s" repeatCount="indefinite"/>
   </text>
 
-  <!-- subrayado que se dibuja y se recoge -->
+  <!-- underline that draws in and out -->
   <rect x="310" y="76" width="0" height="2" fill="#ff2f2f">
     <animate attributeName="width" values="0;360;360;0" keyTimes="0;.35;.8;1"
              dur="6s" repeatCount="indefinite"/>
