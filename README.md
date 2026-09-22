@@ -126,6 +126,14 @@ arquitectura y mantenibilidad.
 
 <div align="center">
 
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/stats.svg" width="100%" alt="Estadísticas de GitHub" />
+
+</div>
+
+<br/>
+
+<div align="center">
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Angel17jc/Angel17jc/output/github-snake-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Angel17jc/Angel17jc/output/github-snake.svg" />
