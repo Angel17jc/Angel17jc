@@ -10,6 +10,8 @@
 
 <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/banner.svg" width="100%" alt="Angel Conforme - Software Engineering Student" />
 
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/typing.svg" width="620" alt="Frontend · Backend · APIs REST · Clean Architecture" />
+
 </div>
 
 <br/>
