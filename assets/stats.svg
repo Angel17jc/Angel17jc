@@ -71,7 +71,7 @@
                         keySplines=".2 .7 .3 1"/>
       <rect x="44" y="83" width="7" height="7" fill="#ff2f2f" transform="rotate(45 47.5 86.5)"/>
       <text x="64" y="92" class="lbl">Contribuciones (último año)</text>
-      <text x="410" y="92" class="num" text-anchor="end">1.632</text>
+      <text x="410" y="92" class="num" text-anchor="end">1.637</text>
     </g>
     <g opacity="0" transform="translate(-12 0)">
       <animate attributeName="opacity" to="1" dur=".5s" begin="0.27s" fill="freeze"/>
@@ -80,7 +80,7 @@
                         keySplines=".2 .7 .3 1"/>
       <rect x="44" y="113" width="7" height="7" fill="#ff2f2f" transform="rotate(45 47.5 116.5)"/>
       <text x="64" y="122" class="lbl">Commits</text>
-      <text x="410" y="122" class="num" text-anchor="end">516</text>
+      <text x="410" y="122" class="num" text-anchor="end">521</text>
     </g>
     <g opacity="0" transform="translate(-12 0)">
       <animate attributeName="opacity" to="1" dur=".5s" begin="0.39s" fill="freeze"/>
