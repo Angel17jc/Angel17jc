@@ -142,11 +142,11 @@ arquitectura y mantenibilidad.
 <p>
 
 <a href="mailto:anchundiaangel129@gmail.com">
-  <img src="https://img.shields.io/badge/Gmail-D14836?style=flat-square&logo=gmail&logoColor=white"/>
+  <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/btn-email.svg" height="44" alt="Email" />
 </a>
 
 <a href="https://www.linkedin.com/in/angel-joshue-conforme-anchundiaa-5258a42a4/" target="_blank">
-  <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin"/>
+  <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/btn-linkedin.svg" height="44" alt="LinkedIn" />
 </a>
 
 </p>
