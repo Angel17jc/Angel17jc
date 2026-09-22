@@ -24,9 +24,9 @@ GAP = 0.35                # pausa con la linea vacia
 PHRASES = [
     "Frontend · React + TypeScript + Tailwind",
     "Backend · Node.js + NestJS + Express",
-    "APIs REST · PostgreSQL · SQL",
-    "Clean Architecture · código que escala",
-    "Pensar antes de codificar",
+    "REST APIs · PostgreSQL · SQL",
+    "Clean Architecture · code that scales",
+    "Think before you code",
 ]
 
 PROMPT = "> "

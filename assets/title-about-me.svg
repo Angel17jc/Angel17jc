@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 60" width="560" height="60"
-     role="img" aria-label="Contacto">
-  <title>Contacto</title>
+     role="img" aria-label="About me">
+  <title>About me</title>
   <defs>
     <!-- mismo barrido de brillo que el nombre -->
     <linearGradient id="shine" gradientUnits="userSpaceOnUse" x1="-300" y1="0" x2="-40" y2="0">
@@ -52,21 +52,21 @@
   </g>
 
   <!-- resplandor rojo latiendo por detras -->
-  <text x="40" y="41" filter="url(#soft)" textLength="180" lengthAdjust="spacing"
+  <text x="40" y="41" filter="url(#soft)" textLength="173" lengthAdjust="spacing"
         font-family="Verdana,DejaVu Sans,sans-serif" font-size="26"
-        font-weight="bold" fill="#ff1e1e" opacity=".4">CONTACTO
+        font-weight="bold" fill="#ff1e1e" opacity=".4">ABOUT ME
     <animate attributeName="opacity" values=".22;.6;.22" dur="3.4s" repeatCount="indefinite"/>
   </text>
 
   <!-- titulo con el barrido de brillo -->
-  <text x="40" y="41" textLength="180" lengthAdjust="spacing"
+  <text x="40" y="41" textLength="173" lengthAdjust="spacing"
         font-family="Verdana,DejaVu Sans,sans-serif" font-size="26"
-        font-weight="bold" class="t">CONTACTO</text>
+        font-weight="bold" class="t">ABOUT ME</text>
 
   <!-- destello: mismo ciclo de 12s que la descarga del banner -->
-  <text x="40" y="41" filter="url(#soft)" textLength="180" lengthAdjust="spacing"
+  <text x="40" y="41" filter="url(#soft)" textLength="173" lengthAdjust="spacing"
         font-family="Verdana,DejaVu Sans,sans-serif" font-size="26"
-        font-weight="bold" fill="#ff6b6b" opacity="0">CONTACTO
+        font-weight="bold" fill="#ff6b6b" opacity="0">ABOUT ME
     <animate attributeName="opacity" values="0;.85;.1;0;0" keyTimes="0;.012;.06;.13;1"
              dur="12s" repeatCount="indefinite"/>
   </text>
@@ -74,7 +74,7 @@
   <!-- linea base tenue y subrayado que se dibuja y se recoge -->
   <rect x="40" y="53" width="500" height="1" fill="url(#rule)"/>
   <rect x="40" y="52" width="0" height="2" fill="#ff2f2f">
-    <animate attributeName="width" values="0;180;180;0" keyTimes="0;.35;.8;1"
+    <animate attributeName="width" values="0;173;173;0" keyTimes="0;.35;.8;1"
              dur="6s" repeatCount="indefinite"/>
   </rect>
 </svg>

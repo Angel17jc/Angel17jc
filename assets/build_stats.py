@@ -70,11 +70,11 @@ def summarize(user):
     langs = sorted(sizes.items(), key=lambda kv: -kv[1])[:TOP_LANGS]
     return {
         "stats": [
-            ("Contribuciones (último año)", cc["contributionCalendar"]["totalContributions"]),
+            ("Contributions (last year)", cc["contributionCalendar"]["totalContributions"]),
             ("Commits", cc["totalCommitContributions"]),
             ("Pull requests", cc["totalPullRequestContributions"]),
-            ("Repositorios públicos", repos["totalCount"]),
-            ("Estrellas", sum(r["stargazerCount"] for r in repos["nodes"])),
+            ("Public repos", repos["totalCount"]),
+            ("Stars", sum(r["stargazerCount"] for r in repos["nodes"])),
         ],
         "langs": [(n, s * 100.0 / total) for n, s in langs],
     }
@@ -95,7 +95,7 @@ def stat_rows(stats):
             '      <text x="64" y="{y}" class="lbl">{label}</text>\n'
             '      <text x="410" y="{y}" class="num" text-anchor="end">{value}</text>\n'
             '    </g>'.format(b=begin, ry=y - 9, cy=y - 5.5, y=y,
-                              label=escape(label), value="{:,}".format(value).replace(",", ".")))
+                              label=escape(label), value="{:,}".format(value)))
     return "\n    ".join(rows)
 
 
@@ -123,8 +123,8 @@ def lang_rows(langs):
 
 
 TPL = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}"
-     role="img" aria-label="Estadisticas de GitHub">
-  <title>Estadisticas de GitHub</title>
+     role="img" aria-label="GitHub stats">
+  <title>GitHub stats</title>
   <defs>
     <clipPath id="frame"><rect x="0" y="0" width="{W}" height="{H}" rx="16"/></clipPath>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
@@ -173,8 +173,8 @@ TPL = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W
     </ellipse>
 
     <g filter="url(#textGlow)">
-      <text x="40" y="48" class="h">ACTIVIDAD</text>
-      <text x="490" y="48" class="h">LENGUAJES M&#193;S USADOS</text>
+      <text x="40" y="48" class="h">ACTIVITY</text>
+      <text x="490" y="48" class="h">TOP LANGUAGES</text>
     </g>
     <rect x="40" y="60" width="0" height="2" fill="#ff2f2f">
       <animate attributeName="width" values="0;370;370;0" keyTimes="0;.35;.8;1"

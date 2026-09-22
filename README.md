@@ -10,48 +10,48 @@
 
 <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/banner.svg" width="100%" alt="Angel Conforme - Software Engineering Student" />
 
-<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/typing.svg" width="620" alt="Frontend · Backend · APIs REST · Clean Architecture" />
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/typing.svg" width="620" alt="Frontend · Backend · REST APIs · Clean Architecture" />
 
 </div>
 
 <br/>
 
-<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/title-sobre-mi.svg" height="48" alt="Sobre mí" />
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/title-about-me.svg" height="48" alt="About me" />
 
 <p>
-¡Hola! Soy <b>Software Developer</b> y estudiante de <b>Ingeniería de Software</b> en la
+Hi! I'm a <b>Software Developer</b> and a <b>Software Engineering</b> student at
 <b>Universidad Laica Eloy Alfaro de Manabí (ULEAM)</b> 🇪🇨.
 </p>
 
 <p>
-Me interesa construir soluciones útiles, bien pensadas y fáciles de mantener.
-El desarrollo no es solo escribir código: también es entender el problema,
-diseñar la arquitectura y entregar algo que pueda crecer con el tiempo.
+I'm interested in building useful, well-thought-out and easy-to-maintain solutions.
+Development isn't just about writing code: it's also about understanding the problem,
+designing the architecture and delivering something that can grow over time.
 </p>
 
 <p>
-Disfruto especialmente pensar antes de codificar: definir responsabilidades,
-organizar componentes y elegir decisiones que hagan el proyecto más claro y escalable.
+I especially enjoy thinking before coding: defining responsibilities,
+organizing components and making decisions that keep a project clear and scalable.
 </p>
 
 <p>
-También me gusta llevar las ideas a la práctica, transformando conceptos en software
-funcional y buscando un equilibrio entre la planificación y la entrega de resultados.
+I also like putting ideas into practice, turning concepts into working software
+and finding a balance between planning and delivering results.
 </p>
 
-<b>🚀 Actualmente enfocado en:</b>
+<b>🚀 Currently focused on:</b>
 
 <ul>
-  <li><b>Frontend Development</b> — React, TypeScript, Vite y Tailwind CSS</li>
-  <li><b>Backend Development</b> — Node.js, NestJS y Express</li>
-  <li>APIs REST y arquitectura de aplicaciones</li>
-  <li><b>Bases de datos</b> — PostgreSQL y SQL</li>
-  <li>Clean Architecture y buenas prácticas de desarrollo</li>
+  <li><b>Frontend Development</b> — React, TypeScript, Vite and Tailwind CSS</li>
+  <li><b>Backend Development</b> — Node.js, NestJS and Express</li>
+  <li>REST APIs and application architecture</li>
+  <li><b>Databases</b> — PostgreSQL and SQL</li>
+  <li>Clean Architecture and development best practices</li>
 </ul>
 
 <p>
-Estoy trabajando para combinar buen diseño de experiencia de usuario con una base sólida de backend,
-arquitectura y mantenibilidad.
+I'm working to combine good user experience design with a solid foundation in backend,
+architecture and maintainability.
 </p>
 
 <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/divider.svg" width="100%" alt="" />
@@ -86,7 +86,7 @@ arquitectura y mantenibilidad.
 </tr>
 
 <tr>
-<td align="right"><b>🗄️ Datos</b></td>
+<td align="right"><b>🗄️ Data</b></td>
 <td align="left">
   <img src="https://skillicons.dev/icons?i=postgres,supabase,firebase&theme=dark" />
   <img src="https://img.shields.io/badge/TypeORM-E83524?style=flat-square&logo=typeorm&logoColor=white&labelColor=1a1a2e" />
@@ -114,19 +114,19 @@ arquitectura y mantenibilidad.
 
 <div align="center">
 
-<p><b>También he trabajado con</b></p>
+<p><b>I've also worked with</b></p>
 
 <img src="https://skillicons.dev/icons?i=kotlin,angular,mongodb,mysql,azure&theme=dark" height="40" />
 
 </div>
 
-<p align="center"><i>Explorando nuevas ideas, aprendiendo y construyendo soluciones con enfoque práctico.</i></p>
+<p align="center"><i>Exploring new ideas, learning and building solutions with a practical approach.</i></p>
 
 <br/>
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/stats.svg" width="100%" alt="Estadísticas de GitHub" />
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/stats.svg" width="100%" alt="GitHub stats" />
 
 </div>
 
@@ -145,7 +145,7 @@ arquitectura y mantenibilidad.
 
 <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/divider.svg" width="100%" alt="" />
 
-<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/title-contacto.svg" height="48" alt="Contacto" />
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/title-contact.svg" height="48" alt="Contact" />
 
 <p>
 
@@ -159,4 +159,4 @@ arquitectura y mantenibilidad.
 
 </p>
 
-<p><b>Siempre abierto a colaborar, aprender y crear proyectos con impacto.</b></p>
+<p><b>Always open to collaborating, learning and building projects with impact.</b></p>
