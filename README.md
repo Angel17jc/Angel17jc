@@ -52,6 +52,8 @@ Estoy trabajando para combinar buen diseño de experiencia de usuario con una ba
 arquitectura y mantenibilidad.
 </p>
 
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/divider.svg" width="100%" alt="" />
+
 <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/title-tech-stack.svg" height="48" alt="Tech Stack" />
 
 <div align="center">
@@ -131,7 +133,7 @@ arquitectura y mantenibilidad.
 
 </div>
 
-<br/>
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/divider.svg" width="100%" alt="" />
 
 <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/title-contacto.svg" height="48" alt="Contacto" />
 
