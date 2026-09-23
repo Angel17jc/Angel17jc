@@ -31,11 +31,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Only commits if the numbers changed; rebases first in case another
-      # workflow pushed in the meantime
+      # Only commits if the numbers changed; retries the push in case
+      # another workflow pushed in the meantime
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/stats.svg
-          git diff --cached --quiet || (git commit -m "chore: update stats.svg" && git pull --rebase && git push)
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: update stats.svg"
+          for i in 1 2 3 4 5; do
+            git pull --rebase && git push && exit 0
+            sleep 10
+          done
+          exit 1
