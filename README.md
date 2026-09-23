@@ -56,6 +56,22 @@ architecture and maintainability.
 
 <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/divider.svg" width="100%" alt="" />
 
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/title-projects.svg" height="48" alt="Featured Projects" />
+
+<p align="center">
+<a href="https://github.com/Angel17jc/AsistControl"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-asistcontrol.svg" width="49%" alt="AsistControl - attendance platform synced with biometric devices" /></a>
+<a href="https://github.com/Angel17jc/Inventario"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-inventario.svg" width="49%" alt="Inventario - multi-tenant inventory and store credit app" /></a>
+</p>
+
+<p align="center">
+<a href="https://github.com/Angel17jc/Enertech"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-enertech.svg" width="49%" alt="Enertech - accessible energy consumption tracker" /></a>
+<a href="https://github.com/Angel17jc/splitfair"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-splitfair.svg" width="49%" alt="SplitFair - shared expenses with debt simplification" /></a>
+</p>
+
+<p align="center"><a href="https://inventario-one-beta.vercel.app">Try the Inventario live demo ↗</a></p>
+
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/divider.svg" width="100%" alt="" />
+
 <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/title-tech-stack.svg" height="48" alt="Tech Stack" />
 
 <div align="center">
