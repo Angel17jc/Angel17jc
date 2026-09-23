@@ -82,7 +82,7 @@
                         dur="0.65s" fill="freeze" calcMode="spline" keySplines="0 0 1 1;.2 .7 .3 1"/>
       <rect x="44" y="83" width="7" height="7" fill="#ff2f2f" transform="rotate(45 47.5 86.5)"/>
       <text x="64" y="92" class="lbl">Contributions (last year)</text>
-      <text x="410" y="92" class="num" text-anchor="end">1,647</text>
+      <text x="410" y="92" class="num" text-anchor="end">1,699</text>
     </g>
     <g>
       <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.351;1" dur="0.77s" fill="freeze"/>
@@ -90,7 +90,7 @@
                         dur="0.77s" fill="freeze" calcMode="spline" keySplines="0 0 1 1;.2 .7 .3 1"/>
       <rect x="44" y="113" width="7" height="7" fill="#ff2f2f" transform="rotate(45 47.5 116.5)"/>
       <text x="64" y="122" class="lbl">Commits</text>
-      <text x="410" y="122" class="num" text-anchor="end">531</text>
+      <text x="410" y="122" class="num" text-anchor="end">538</text>
     </g>
     <g>
       <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.438;1" dur="0.89s" fill="freeze"/>
@@ -98,7 +98,7 @@
                         dur="0.89s" fill="freeze" calcMode="spline" keySplines="0 0 1 1;.2 .7 .3 1"/>
       <rect x="44" y="143" width="7" height="7" fill="#ff2f2f" transform="rotate(45 47.5 146.5)"/>
       <text x="64" y="152" class="lbl">Pull requests</text>
-      <text x="410" y="152" class="num" text-anchor="end">10</text>
+      <text x="410" y="152" class="num" text-anchor="end">13</text>
     </g>
     <g>
       <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.505;1" dur="1.01s" fill="freeze"/>
@@ -129,47 +129,47 @@
                calcMode="spline" keySplines="0 0 1 1;.2 .7 .3 1"/>
     </rect>
     <text x="490" y="122" class="lbl">Python</text>
-    <text x="860" y="122" class="pct" text-anchor="end">18.3%</text>
+    <text x="860" y="122" class="pct" text-anchor="end">18.2%</text>
     <rect x="490" y="130" width="370" height="6" rx="3" fill="#2a0e0e"/>
-    <rect x="490" y="130" width="118.1" height="6" rx="3" fill="url(#bar)">
-      <animate attributeName="width" values="0;0;118.1" keyTimes="0;0.333;1" dur="1.65s" fill="freeze"
+    <rect x="490" y="130" width="117.9" height="6" rx="3" fill="url(#bar)">
+      <animate attributeName="width" values="0;0;117.9" keyTimes="0;0.333;1" dur="1.65s" fill="freeze"
                calcMode="spline" keySplines="0 0 1 1;.2 .7 .3 1"/>
     </rect>
-    <rect x="490" y="130" width="118.1" height="6" rx="3" fill="url(#sweep)">
-      <animate attributeName="width" values="0;0;118.1" keyTimes="0;0.333;1" dur="1.65s" fill="freeze"
+    <rect x="490" y="130" width="117.9" height="6" rx="3" fill="url(#sweep)">
+      <animate attributeName="width" values="0;0;117.9" keyTimes="0;0.333;1" dur="1.65s" fill="freeze"
                calcMode="spline" keySplines="0 0 1 1;.2 .7 .3 1"/>
     </rect>
     <text x="490" y="152" class="lbl">Java</text>
     <text x="860" y="152" class="pct" text-anchor="end">13.3%</text>
     <rect x="490" y="160" width="370" height="6" rx="3" fill="#2a0e0e"/>
-    <rect x="490" y="160" width="86.2" height="6" rx="3" fill="url(#bar)">
-      <animate attributeName="width" values="0;0;86.2" keyTimes="0;0.389;1" dur="1.80s" fill="freeze"
+    <rect x="490" y="160" width="86.0" height="6" rx="3" fill="url(#bar)">
+      <animate attributeName="width" values="0;0;86.0" keyTimes="0;0.389;1" dur="1.80s" fill="freeze"
                calcMode="spline" keySplines="0 0 1 1;.2 .7 .3 1"/>
     </rect>
-    <rect x="490" y="160" width="86.2" height="6" rx="3" fill="url(#sweep)">
-      <animate attributeName="width" values="0;0;86.2" keyTimes="0;0.389;1" dur="1.80s" fill="freeze"
+    <rect x="490" y="160" width="86.0" height="6" rx="3" fill="url(#sweep)">
+      <animate attributeName="width" values="0;0;86.0" keyTimes="0;0.389;1" dur="1.80s" fill="freeze"
                calcMode="spline" keySplines="0 0 1 1;.2 .7 .3 1"/>
     </rect>
     <text x="490" y="182" class="lbl">Kotlin</text>
     <text x="860" y="182" class="pct" text-anchor="end">5.2%</text>
     <rect x="490" y="190" width="370" height="6" rx="3" fill="#2a0e0e"/>
-    <rect x="490" y="190" width="33.6" height="6" rx="3" fill="url(#bar)">
-      <animate attributeName="width" values="0;0;33.6" keyTimes="0;0.436;1" dur="1.95s" fill="freeze"
+    <rect x="490" y="190" width="33.5" height="6" rx="3" fill="url(#bar)">
+      <animate attributeName="width" values="0;0;33.5" keyTimes="0;0.436;1" dur="1.95s" fill="freeze"
                calcMode="spline" keySplines="0 0 1 1;.2 .7 .3 1"/>
     </rect>
-    <rect x="490" y="190" width="33.6" height="6" rx="3" fill="url(#sweep)">
-      <animate attributeName="width" values="0;0;33.6" keyTimes="0;0.436;1" dur="1.95s" fill="freeze"
+    <rect x="490" y="190" width="33.5" height="6" rx="3" fill="url(#sweep)">
+      <animate attributeName="width" values="0;0;33.5" keyTimes="0;0.436;1" dur="1.95s" fill="freeze"
                calcMode="spline" keySplines="0 0 1 1;.2 .7 .3 1"/>
     </rect>
     <text x="490" y="212" class="lbl">PLpgSQL</text>
-    <text x="860" y="212" class="pct" text-anchor="end">4.8%</text>
+    <text x="860" y="212" class="pct" text-anchor="end">4.9%</text>
     <rect x="490" y="220" width="370" height="6" rx="3" fill="#2a0e0e"/>
-    <rect x="490" y="220" width="31.1" height="6" rx="3" fill="url(#bar)">
-      <animate attributeName="width" values="0;0;31.1" keyTimes="0;0.476;1" dur="2.10s" fill="freeze"
+    <rect x="490" y="220" width="31.4" height="6" rx="3" fill="url(#bar)">
+      <animate attributeName="width" values="0;0;31.4" keyTimes="0;0.476;1" dur="2.10s" fill="freeze"
                calcMode="spline" keySplines="0 0 1 1;.2 .7 .3 1"/>
     </rect>
-    <rect x="490" y="220" width="31.1" height="6" rx="3" fill="url(#sweep)">
-      <animate attributeName="width" values="0;0;31.1" keyTimes="0;0.476;1" dur="2.10s" fill="freeze"
+    <rect x="490" y="220" width="31.4" height="6" rx="3" fill="url(#sweep)">
+      <animate attributeName="width" values="0;0;31.4" keyTimes="0;0.476;1" dur="2.10s" fill="freeze"
                calcMode="spline" keySplines="0 0 1 1;.2 .7 .3 1"/>
     </rect>
 
