@@ -144,6 +144,10 @@ architecture and maintainability.
 
 <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/stats.svg" width="100%" alt="GitHub stats" />
 
+<br/><br/>
+
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/profile-3d-contrib/profile-3d-red.svg" width="100%" alt="3D contribution graph" />
+
 </div>
 
 <br/>
