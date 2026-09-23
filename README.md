@@ -76,63 +76,7 @@ architecture and maintainability.
 
 <div align="center">
 
-<table border="0" cellspacing="8">
-
-<tr>
-<td align="right" width="150px"><b>💻 Frontend</b></td>
-<td align="left">
-  <img src="https://skillicons.dev/icons?i=ts,react,nextjs,tailwind,vite&theme=dark" />
-</td>
-</tr>
-
-<tr>
-<td align="right"><b>⚙️ Backend</b></td>
-<td align="left">
-  <img src="https://skillicons.dev/icons?i=nodejs,nestjs,express,python,java,spring&theme=dark" />
-</td>
-</tr>
-
-<tr>
-<td align="right"><b>🔗 APIs</b></td>
-<td align="left">
-  <img src="https://skillicons.dev/icons?i=graphql&theme=dark" />
-  <img src="https://img.shields.io/badge/REST-85EA2D?style=flat-square&logo=swagger&logoColor=black&labelColor=1a1a2e" />
-  <img src="https://img.shields.io/badge/WebSockets-010101?style=flat-square&logo=socket.io&logoColor=white&labelColor=1a1a2e" />
-</td>
-</tr>
-
-<tr>
-<td align="right"><b>🗄️ Data</b></td>
-<td align="left">
-  <img src="https://skillicons.dev/icons?i=postgres,supabase,firebase&theme=dark" />
-  <img src="https://img.shields.io/badge/TypeORM-E83524?style=flat-square&logo=typeorm&logoColor=white&labelColor=1a1a2e" />
-</td>
-</tr>
-
-<tr>
-<td align="right"><b>🐳 DevOps</b></td>
-<td align="left">
-  <img src="https://skillicons.dev/icons?i=docker,git,githubactions,linux&theme=dark" />
-</td>
-</tr>
-
-<tr>
-<td align="right"><b>🔐 Auth</b></td>
-<td align="left">
-  <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white&labelColor=1a1a2e" />
-  <img src="https://img.shields.io/badge/Passport.js-34E27A?style=flat-square&logo=passport&logoColor=black&labelColor=1a1a2e" />
-</td>
-</tr>
-
-</table>
-
-</div>
-
-<div align="center">
-
-<p><b>I've also worked with</b></p>
-
-<img src="https://skillicons.dev/icons?i=kotlin,angular,mongodb,mysql,azure&theme=dark" height="40" />
+<img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/stack.svg" width="100%" alt="Frontend: TypeScript, React, Next.js, Tailwind, Vite. Backend: Node.js, NestJS, Express, Python, Java, Spring. APIs: GraphQL, REST, WebSockets. Data: PostgreSQL, Supabase, Firebase, TypeORM, Prisma. DevOps: Docker, Git, GitHub Actions, Linux. Auth: JWT, Passport.js. Also used: Kotlin, Angular, MongoDB, MySQL, Azure." />
 
 </div>
 
