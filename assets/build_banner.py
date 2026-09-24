@@ -1,21 +1,20 @@
 # -*- coding: utf-8 -*-
 """Builds assets/banner.svg: animated banner with a pseudo-3D effect.
 
-Usage:  python build_banner.py <background.png> <output.svg>
-        (the current banner: python build_banner.py LIBE.jpg banner.svg)
+Usage:  python build_banner.py <background.png> <clover.png> <output.svg>
+        (the current banner: python build_banner.py LIBE.jpg CLOVER.png banner.svg)
 
-The background is embedded as a data URI because GitHub (camo) blocks
-external references inside an SVG. The portrait is a five-leaf black clover
-drawn as vectors in a manga ink style. The animation uses SMIL, which is what
-already works in the README (readme-typing-svg).
+Both images are embedded as data URIs because GitHub (camo) blocks external
+references inside an SVG. The portrait is the five-leaf black clover cut out
+of CLOVER.png, keeping its rough edges and scratches. The animation uses SMIL,
+which is what already works in the README (readme-typing-svg).
 """
 import base64
 import io
-import math
 import random
 import sys
 
-from PIL import Image, ImageFilter
+from PIL import Image, ImageChops, ImageDraw, ImageFilter
 
 W, H = 1000, 320          # banner canvas
 FACE_R = 104              # radius of the circular portrait
@@ -47,70 +46,33 @@ def build_bg(path):
 
 BG_FOCUS_Y = 0.62         # which vertical band of the background is cropped, 0..1
 BG_DARKEN = 0.50          # how much the background is darkened
-CLOVER_SIZE = 92          # clover radius, just inside the portrait ring
-
-# one heart-shaped leaf in a 93-unit box: tip near the center, lobes towards -y
-LEAF = [
-    ((0, -8), (-10, -18), (-38, -38), (-36, -63)),
-    ((-36, -63), (-34, -87), (-10, -93), (0, -76)),
-    ((0, -76), (10, -93), (34, -87), (36, -63)),
-    ((36, -63), (38, -38), (10, -18), (0, -8)),
-]
+CLOVER_SIZE = 186         # side of the clover image, so its leaves reach the ring
 
 
-def _bez(seg, t):
-    """Point at t on a cubic Bezier segment."""
-    (x0, y0), (x1, y1), (x2, y2), (x3, y3) = seg
-    u = 1 - t
-    return (u ** 3 * x0 + 3 * u * u * t * x1 + 3 * u * t * t * x2 + t ** 3 * x3,
-            u ** 3 * y0 + 3 * u * u * t * y1 + 3 * u * t * t * y2 + t ** 3 * y3)
+def build_clover(path):
+    """Cuts the black clover out of its light background.
 
+    Dark pixels are the ink. Light pixels enclosed by ink are the scratches,
+    so they stay; light pixels reachable from the border are background and
+    become transparent. Grey anti-aliased pixels on the edge get partial alpha.
+    """
+    src = Image.open(path).convert("L")
+    l, t, r, b = src.point(lambda v: 255 if v < 128 else 0).getbbox()
+    pad = 6
+    g = src.crop((max(0, l - pad), max(0, t - pad),
+                  min(src.width, r + pad), min(src.height, b + pad)))
 
-def _leaf_path(k):
-    d = "M%.1f %.1f " % (LEAF[0][0][0] * k, LEAF[0][0][1] * k)
-    for seg in LEAF:
-        d += "C%.1f %.1f %.1f %.1f %.1f %.1f " % tuple(v * k for pt in seg[1:] for v in pt)
-    return d + "Z"
+    ink = g.point(lambda v: 255 if v < 128 else 0)
+    ImageDraw.floodfill(ink, (0, 0), 128)                 # background seen from outside
+    silhouette = ink.point(lambda v: 0 if v == 128 else 255)
+    edge = g.point(lambda v: max(0, min(255, int((215 - v) * 255 / 150))))
+    alpha = ImageChops.lighter(silhouette, edge)
 
-
-def _hatches(k, rng):
-    """Manga ink strokes: short dashes along the lobes pointing into the leaf,
-    plus an inner broken heart outline, like the reference sticker."""
-    out = []
-    inner = (0, -55 * k)
-    for seg_i, n in ((0, 8), (1, 9), (2, 9), (3, 8)):
-        for j in range(n):
-            t = (j + 0.5 + rng.uniform(-.25, .25)) / n
-            if seg_i == 0 and t < .5 or seg_i == 3 and t > .5:
-                continue            # keep the stems clean
-            x, y = _bez(LEAF[seg_i], t)
-            x, y = x * k, y * k
-            dx, dy = inner[0] - x, inner[1] - y
-            ln = math.hypot(dx, dy)
-            a, b = rng.uniform(2.5, 4.5), rng.uniform(5, 9)
-            out.append("M%.1f %.1f L%.1f %.1f" % (
-                x + dx / ln * a, y + dy / ln * a, x + dx / ln * (a + b), y + dy / ln * (a + b)))
-    for seg_i in (1, 2):
-        for j in range(7):
-            x, y = _bez(LEAF[seg_i], (j + .5) / 7)
-            x, y = x * k * .6, (y * .6 - 18) * k
-            dx, dy = inner[0] - x, inner[1] - y
-            ln = math.hypot(dx, dy) or 1
-            b = rng.uniform(4, 7)
-            out.append("M%.1f %.1f L%.1f %.1f" % (x, y, x + dx / ln * b, y + dy / ln * b))
-    return " ".join(out)
-
-
-def clover_markup():
-    """Five leaves at 72 degrees joined by a solid center, and their hatching."""
-    rng = random.Random(5)
-    k = CLOVER_SIZE / 93.0
-    leaf = _leaf_path(k)
-    leaves = ['<path d="%s" transform="rotate(%d)"/>' % (leaf, i * 72) for i in range(5)]
-    leaves.append('<circle r="%.1f"/>' % (15 * k))
-    marks = ['<path d="%s" transform="rotate(%d)"/>' % (_hatches(k, rng), i * 72)
-             for i in range(5)]
-    return "\n            ".join(leaves), "\n            ".join(marks)
+    im = Image.merge("RGBA", (g, g, g, alpha))
+    side = max(im.size)
+    square = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+    square.paste(im, ((side - im.width) // 2, (side - im.height) // 2))
+    return _b64(square, "PNG", optimize=True)
 
 
 SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -161,13 +123,13 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
       <stop offset="1" stop-color="#070202"/>
     </radialGradient>
 
-    <!-- mottled ink texture, only where the leaves are -->
-    <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
-      <feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="3" seed="7" result="n"/>
-      <feColorMatrix in="n" type="matrix"
-        values="0 0 0 0 .2  0 0 0 0 .17  0 0 0 0 .17  3 0 0 0 -1.75" result="g"/>
-      <feComposite in="g" in2="SourceAlpha" operator="in" result="gi"/>
-      <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="gi"/></feMerge>
+    <!-- the clover image, embedded once and drawn twice with <use> -->
+    <image id="clover" xlink:href="{CLOVER}" x="{CO}" y="{CO}" width="{CS}" height="{CS}"/>
+
+    <!-- turns the white scratches red and leaves the black ink black -->
+    <filter id="redInk">
+      <feColorMatrix type="matrix"
+        values="1 0 0 0 0  .15 0 0 0 0  .15 0 0 0 0  0 0 0 1 0"/>
     </filter>
 
     <!-- sticker-like pale outline plus a red glow around the clover -->
@@ -237,19 +199,16 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
                           repeatCount="indefinite"/>
         <circle cx="{FCX}" cy="{FCY}" r="{FRG}" fill="#ff1e1e" opacity=".30" filter="url(#soft)"/>
         <circle cx="{FCX}" cy="{FCY}" r="{FR}" fill="url(#disc)"/>
-        <!-- black clover: turns slowly, its ink strokes light up on every surge -->
+        <!-- black clover: turns slowly, its scratches light up red on every surge -->
         <g transform="translate({FCX} {FCY})" filter="url(#rim)">
           <g>
             <animateTransform attributeName="transform" type="rotate"
                               from="0" to="360" dur="48s" repeatCount="indefinite"/>
-            <g fill="#0a0606" filter="url(#grain)">
-            {LEAVES}
-            </g>
-            <g fill="none" stroke="#7d6f6f" stroke-width="1.4" stroke-linecap="round">
-              <animate attributeName="stroke" values="#7d6f6f;#ff4d4d;#7d6f6f;#7d6f6f"
-                       keyTimes="0;.015;.12;1" dur="{SURGE}s" repeatCount="indefinite"/>
-            {MARKS}
-            </g>
+            <use xlink:href="#clover"/>
+            <use xlink:href="#clover" filter="url(#redInk)" opacity="0">
+              <animate attributeName="opacity" values="0;1;.15;0;0" keyTimes="0;.012;.06;.12;1"
+                       dur="{SURGE}s" repeatCount="indefinite"/>
+            </use>
           </g>
         </g>
         <!-- the heart of the clover flares with the surge -->
@@ -418,12 +377,12 @@ def arcs(n=7):
 
 
 def main():
-    bg_path, out_path = sys.argv[1], sys.argv[2]
-    leaves, marks = clover_markup()
+    bg_path, clover_path, out_path = sys.argv[1], sys.argv[2], sys.argv[3]
     svg = SVG.format(
         W=W, H=H,
         BW=int(W * 1.15), BH=int(H * 1.15),
-        BG=build_bg(bg_path), LEAVES=leaves, MARKS=marks,
+        BG=build_bg(bg_path), CLOVER=build_clover(clover_path),
+        CS=CLOVER_SIZE, CO=-CLOVER_SIZE / 2.0,
         FCX=FACE_CX, FCY=FACE_CY, FR=FACE_R, FRG=FACE_R + 16, FRR=FACE_R + 11,
         FRR2=FACE_R + 24,
         EMBERS=embers(),
