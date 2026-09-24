@@ -1,17 +1,21 @@
 # -*- coding: utf-8 -*-
 """Builds assets/banner.svg: animated banner with a pseudo-3D effect.
 
-Usage:  python build_banner.py <background.png> <character.png> <output.svg>
+Usage:  python build_banner.py <background.png> <output.svg>
+        (the current banner: python build_banner.py LIBE.jpg banner.svg)
 
-The PNG is embedded as a data URI because GitHub (camo) blocks external
-references inside an SVG. The animation uses SMIL, which is what already
-works in the README (readme-typing-svg).
+The background is embedded as a data URI because GitHub (camo) blocks
+external references inside an SVG. The portrait is a five-leaf black clover
+drawn as vectors in a manga ink style. The animation uses SMIL, which is what
+already works in the README (readme-typing-svg).
 """
 import base64
 import io
+import math
+import random
 import sys
 
-from PIL import Image, ImageChops, ImageDraw, ImageFilter
+from PIL import Image, ImageFilter
 
 W, H = 1000, 320          # banner canvas
 FACE_R = 104              # radius of the circular portrait
@@ -43,76 +47,70 @@ def build_bg(path):
 
 BG_FOCUS_Y = 0.62         # which vertical band of the background is cropped, 0..1
 BG_DARKEN = 0.50          # how much the background is darkened
-FACE_ZOOM = 0.72          # fraction of the shorter side that is cropped (less = more zoom)
-FACE_FOCUS_X = 0.50       # crop center, 0..1
-FACE_FOCUS_Y = 0.32
+CLOVER_SIZE = 92          # clover radius, just inside the portrait ring
+
+# one heart-shaped leaf in a 93-unit box: tip near the center, lobes towards -y
+LEAF = [
+    ((0, -8), (-10, -18), (-38, -38), (-36, -63)),
+    ((-36, -63), (-34, -87), (-10, -93), (0, -76)),
+    ((0, -76), (10, -93), (34, -87), (36, -63)),
+    ((36, -63), (38, -38), (10, -18), (0, -8)),
+]
 
 
-def build_face(path):
-    """Character: crop to the face, warm tint and radial fade.
-
-    The fade avoids the hard edge of the circle: the green background of
-    the original dissolves into black and the character seems to emerge.
-    """
-    im = Image.open(path).convert("RGBA")
-    side = int(min(im.width, im.height) * FACE_ZOOM)
-    cx, cy = int(im.width * FACE_FOCUS_X), int(im.height * FACE_FOCUS_Y)
-    left = max(0, min(cx - side // 2, im.width - side))
-    top = max(0, min(cy - side // 2, im.height - side))
-    im = im.crop((left, top, left + side, top + side)).resize((512, 512), Image.LANCZOS)
-
-    rgb = im.convert("RGB")
-    clean = rgb.copy()          # untinted: eyes are easier to detect here
-    r, g, b = rgb.split()
-
-    # "greenness" = how much G exceeds the max of R and B. It is ~0 on the white
-    # hair, skin, black horns and red eyes; high only on the grass.
-    green = ImageChops.subtract(g, ImageChops.lighter(r, b))
-    green = green.point(lambda v: min(255, int(v * 5.0)))
-    green = green.filter(ImageFilter.GaussianBlur(1.5))
-
-    # the grass fades into very dark red...
-    rgb = Image.composite(Image.new("RGB", (512, 512), (46, 8, 10)), rgb, green)
-    # ...and a soft global tint ties the character to the banner palette
-    rgb = Image.blend(rgb, Image.new("RGB", (512, 512), (110, 16, 18)), 0.16)
-    rgb = Image.eval(rgb, lambda v: int(v * 0.92))
-    im = rgb.convert("RGBA")
-
-    # radial alpha: opaque up to 58% of the radius, transparent at 100%
-    mask = Image.new("L", (512, 512), 0)
-    d = ImageDraw.Draw(mask)
-    steps = 64
-    for i in range(steps, 0, -1):
-        f = i / float(steps)                      # 1.0 edge -> 0 center
-        r = 256 * f
-        t = max(0.0, 1 - (f - 0.58) / 0.42)      # clamped: avoids a negative base
-        a = 255 if f <= 0.58 else int(255 * t ** 1.5)
-        d.ellipse((256 - r, 256 - r, 256 + r, 256 + r), fill=a)
-    mask = mask.filter(ImageFilter.GaussianBlur(4))
-    # where there was grass, it also becomes transparent
-    mask = ImageChops.subtract(mask, green.point(lambda v: int(v * 0.85)))
-    im.putalpha(mask)
-    return _b64(im, "PNG", optimize=True), _find_eyes(clean)
+def _bez(seg, t):
+    """Point at t on a cubic Bezier segment."""
+    (x0, y0), (x1, y1), (x2, y2), (x3, y3) = seg
+    u = 1 - t
+    return (u ** 3 * x0 + 3 * u * u * t * x1 + 3 * u * t * t * x2 + t ** 3 * x3,
+            u ** 3 * y0 + 3 * u * u * t * y1 + 3 * u * t * t * y2 + t ** 3 * y3)
 
 
-def _find_eyes(rgb):
-    """Finds the red eyes in the already cropped face (512x512).
+def _leaf_path(k):
+    d = "M%.1f %.1f " % (LEAF[0][0][0] * k, LEAF[0][0][1] * k)
+    for seg in LEAF:
+        d += "C%.1f %.1f %.1f %.1f %.1f %.1f " % tuple(v * k for pt in seg[1:] for v in pt)
+    return d + "Z"
 
-    Looks for pixels with high R and low G/B: in this image only the eyes
-    match. Returns [(x, y), ...] in image coordinates.
-    """
-    px = rgb.load()
-    pts = [(x, y) for y in range(0, 512, 2) for x in range(0, 512, 2)
-           if px[x, y][0] > 150 and px[x, y][1] < 85 and px[x, y][2] < 85]
-    if len(pts) < 6:
-        return []
-    mid = (min(p[0] for p in pts) + max(p[0] for p in pts)) / 2.0
+
+def _hatches(k, rng):
+    """Manga ink strokes: short dashes along the lobes pointing into the leaf,
+    plus an inner broken heart outline, like the reference sticker."""
     out = []
-    for grp in ([p for p in pts if p[0] < mid], [p for p in pts if p[0] >= mid]):
-        if grp:
-            out.append((sum(p[0] for p in grp) / float(len(grp)),
-                        sum(p[1] for p in grp) / float(len(grp))))
-    return out
+    inner = (0, -55 * k)
+    for seg_i, n in ((0, 8), (1, 9), (2, 9), (3, 8)):
+        for j in range(n):
+            t = (j + 0.5 + rng.uniform(-.25, .25)) / n
+            if seg_i == 0 and t < .5 or seg_i == 3 and t > .5:
+                continue            # keep the stems clean
+            x, y = _bez(LEAF[seg_i], t)
+            x, y = x * k, y * k
+            dx, dy = inner[0] - x, inner[1] - y
+            ln = math.hypot(dx, dy)
+            a, b = rng.uniform(2.5, 4.5), rng.uniform(5, 9)
+            out.append("M%.1f %.1f L%.1f %.1f" % (
+                x + dx / ln * a, y + dy / ln * a, x + dx / ln * (a + b), y + dy / ln * (a + b)))
+    for seg_i in (1, 2):
+        for j in range(7):
+            x, y = _bez(LEAF[seg_i], (j + .5) / 7)
+            x, y = x * k * .6, (y * .6 - 18) * k
+            dx, dy = inner[0] - x, inner[1] - y
+            ln = math.hypot(dx, dy) or 1
+            b = rng.uniform(4, 7)
+            out.append("M%.1f %.1f L%.1f %.1f" % (x, y, x + dx / ln * b, y + dy / ln * b))
+    return " ".join(out)
+
+
+def clover_markup():
+    """Five leaves at 72 degrees joined by a solid center, and their hatching."""
+    rng = random.Random(5)
+    k = CLOVER_SIZE / 93.0
+    leaf = _leaf_path(k)
+    leaves = ['<path d="%s" transform="rotate(%d)"/>' % (leaf, i * 72) for i in range(5)]
+    leaves.append('<circle r="%.1f"/>' % (15 * k))
+    marks = ['<path d="%s" transform="rotate(%d)"/>' % (_hatches(k, rng), i * 72)
+             for i in range(5)]
+    return "\n            ".join(leaves), "\n            ".join(marks)
 
 
 SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -121,7 +119,6 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
   <title>Angel Conforme</title>
   <defs>
     <clipPath id="frame"><rect x="0" y="0" width="{W}" height="{H}" rx="16"/></clipPath>
-    <clipPath id="face"><circle cx="{FCX}" cy="{FCY}" r="{FR}"/></clipPath>
 
     <radialGradient id="emberGlow" cx="50%" cy="50%" r="50%">
       <stop offset="0%"   stop-color="#ff2b2b" stop-opacity=".85"/>
@@ -140,7 +137,7 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
       <stop offset="100%" stop-color="#000" stop-opacity=".8"/>
     </radialGradient>
 
-    <!-- eye glow: white to red, fading out -->
+    <!-- core glow: white to red, fading out -->
     <radialGradient id="eyeGlow">
       <stop offset="0%"   stop-color="#fff0f0" stop-opacity=".95"/>
       <stop offset="28%"  stop-color="#ff3b3b" stop-opacity=".75"/>
@@ -157,6 +154,31 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
       <animate attributeName="x1" from="150" to="1000" dur="5.2s" repeatCount="indefinite"/>
       <animate attributeName="x2" from="410" to="1260" dur="5.2s" repeatCount="indefinite"/>
     </linearGradient>
+
+    <!-- disc behind the clover -->
+    <radialGradient id="disc">
+      <stop offset="0" stop-color="#3a0808"/>
+      <stop offset="1" stop-color="#070202"/>
+    </radialGradient>
+
+    <!-- mottled ink texture, only where the leaves are -->
+    <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="3" seed="7" result="n"/>
+      <feColorMatrix in="n" type="matrix"
+        values="0 0 0 0 .2  0 0 0 0 .17  0 0 0 0 .17  3 0 0 0 -1.75" result="g"/>
+      <feComposite in="g" in2="SourceAlpha" operator="in" result="gi"/>
+      <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="gi"/></feMerge>
+    </filter>
+
+    <!-- sticker-like pale outline plus a red glow around the clover -->
+    <filter id="rim" x="-20%" y="-20%" width="140%" height="140%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="d1"/>
+      <feFlood flood-color="#e8dada"/><feComposite in2="d1" operator="in" result="edge"/>
+      <feMorphology in="SourceAlpha" operator="dilate" radius="4" result="d2"/>
+      <feFlood flood-color="#ff2f2f"/><feComposite in2="d2" operator="in" result="red"/>
+      <feGaussianBlur in="red" stdDeviation="6" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="edge"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
 
     <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
       <feGaussianBlur stdDeviation="7"/>
@@ -195,7 +217,7 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
     <!-- gradient separating the portrait from the text -->
     <rect width="{W}" height="{H}" fill="url(#fade)"/>
 
-    <!-- LAYER 2 - portrait: floats and tilts (fake Y rotation) -->
+    <!-- LAYER 2 - clover portrait: floats and tilts (fake Y rotation) -->
     <g>
       <!-- vertical float -->
       <animateTransform attributeName="transform" type="translate"
@@ -214,10 +236,27 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
                           keySplines=".42 0 .58 1;.42 0 .58 1;.42 0 .58 1;.42 0 .58 1"
                           repeatCount="indefinite"/>
         <circle cx="{FCX}" cy="{FCY}" r="{FRG}" fill="#ff1e1e" opacity=".30" filter="url(#soft)"/>
-        <image xlink:href="{FACE}" clip-path="url(#face)"
-               x="{FX}" y="{FY}" width="{FS}" height="{FS}"/>
-        <!-- eyes: pulse with an irregular rhythm, like embers -->
-        <g clip-path="url(#face)">{EYES}</g>
+        <circle cx="{FCX}" cy="{FCY}" r="{FR}" fill="url(#disc)"/>
+        <!-- black clover: turns slowly, its ink strokes light up on every surge -->
+        <g transform="translate({FCX} {FCY})" filter="url(#rim)">
+          <g>
+            <animateTransform attributeName="transform" type="rotate"
+                              from="0" to="360" dur="48s" repeatCount="indefinite"/>
+            <g fill="#0a0606" filter="url(#grain)">
+            {LEAVES}
+            </g>
+            <g fill="none" stroke="#7d6f6f" stroke-width="1.4" stroke-linecap="round">
+              <animate attributeName="stroke" values="#7d6f6f;#ff4d4d;#7d6f6f;#7d6f6f"
+                       keyTimes="0;.015;.12;1" dur="{SURGE}s" repeatCount="indefinite"/>
+            {MARKS}
+            </g>
+          </g>
+        </g>
+        <!-- the heart of the clover flares with the surge -->
+        <circle cx="{FCX}" cy="{FCY}" r="30" fill="url(#eyeGlow)" opacity="0">
+          <animate attributeName="opacity" values="0;1;.15;0;0" keyTimes="0;.012;.06;.12;1"
+                   dur="{SURGE}s" repeatCount="indefinite"/>
+        </circle>
         <!-- outer ring that spins and breathes -->
         <circle cx="{FCX}" cy="{FCY}" r="{FRR}" fill="none" stroke="#ff2f2f"
                 stroke-width="2" stroke-dasharray="26 14" opacity=".8">
@@ -280,7 +319,6 @@ SVG = u"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org
 
 def embers(n=13):
     """Rising embers, each with its own rhythm."""
-    import random
     random.seed(7)
     out = []
     for i in range(n):
@@ -334,7 +372,6 @@ def sparks(n=5):
     animateMotion over a circular path: each one with its own radius,
     speed and starting point, so they do not form a pattern.
     """
-    import random
     random.seed(13)
     out = []
     for i in range(n):
@@ -357,7 +394,6 @@ def sparks(n=5):
 def arcs(n=7):
     """Jagged energy arcs that only appear during the surge."""
     import math
-    import random
     random.seed(29)
     out = []
     for i in range(n):
@@ -381,45 +417,16 @@ def arcs(n=7):
     return "".join(out)
 
 
-def eyes_markup(eyes):
-    """Maps the detected eyes (512x512) to canvas coordinates."""
-    scale = (FACE_R * 2) / 512.0
-    ox, oy = FACE_CX - FACE_R, FACE_CY - FACE_R
-    out = []
-    for i, (ex, ey) in enumerate(eyes):
-        cx, cy = ox + ex * scale, oy + ey * scale
-        # both eyes pulse out of phase: it feels alive, not like a switch
-        begin = "0s" if i == 0 else "-1.1s"
-        out.append(
-            '<ellipse cx="%.1f" cy="%.1f" rx="11" ry="8.5" fill="url(#eyeGlow)">'
-            '<animate attributeName="opacity" values=".3;1;.45;.85;.3"'
-            ' keyTimes="0;.18;.42;.7;1" dur="2.6s" begin="%s" repeatCount="indefinite"/>'
-            '<animateTransform attributeName="transform" type="scale" additive="sum"'
-            ' values="1;1.35;1" dur="2.6s" begin="%s" repeatCount="indefinite"/>'
-            "</ellipse>" % (cx, cy, begin, begin)
-        )
-        # flash: only during the surge, much bigger and brighter
-        out.append(
-            '<ellipse cx="%.1f" cy="%.1f" rx="26" ry="20" fill="url(#eyeGlow)" opacity="0">'
-            '<animate attributeName="opacity" values="0;1;.15;0;0" keyTimes="0;.012;.06;.12;1"'
-            ' dur="%ss" repeatCount="indefinite"/>'
-            "</ellipse>" % (cx, cy, SURGE)
-        )
-    return "".join(out)
-
-
 def main():
-    bg_path, face_path, out_path = sys.argv[1], sys.argv[2], sys.argv[3]
-    face_uri, eyes = build_face(face_path)
-    print("   eyes detected:", len(eyes))
+    bg_path, out_path = sys.argv[1], sys.argv[2]
+    leaves, marks = clover_markup()
     svg = SVG.format(
         W=W, H=H,
         BW=int(W * 1.15), BH=int(H * 1.15),
-        BG=build_bg(bg_path), FACE=face_uri,
+        BG=build_bg(bg_path), LEAVES=leaves, MARKS=marks,
         FCX=FACE_CX, FCY=FACE_CY, FR=FACE_R, FRG=FACE_R + 16, FRR=FACE_R + 11,
         FRR2=FACE_R + 24,
-        FX=FACE_CX - FACE_R, FY=FACE_CY - FACE_R, FS=FACE_R * 2,
-        EYES=eyes_markup(eyes), EMBERS=embers(),
+        EMBERS=embers(),
         SHOCK=shockwaves(), SPARKS=sparks(), ARCS=arcs(), SURGE=SURGE,
     )
     with io.open(out_path, "w", encoding="utf-8", newline="\n") as fh:
