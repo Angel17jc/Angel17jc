@@ -192,7 +192,7 @@
 
     <g>
       <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.600;1" dur="1.50s" fill="freeze"/>
-      <text x="150" y="292" class="big" text-anchor="middle" filter="url(#textGlow)">5</text>
+      <text x="150" y="292" class="big" text-anchor="middle" filter="url(#textGlow)">0</text>
       <text x="150" y="312" class="unit" text-anchor="middle">days</text>
       <text x="150" y="332" class="cap" text-anchor="middle">CURRENT STREAK</text>
     </g>
