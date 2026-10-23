@@ -68,6 +68,10 @@ architecture and maintainability.
 <a href="https://github.com/Angel17jc/splitfair"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-splitfair.svg" width="49%" alt="SplitFair - shared expenses with debt simplification" /></a>
 </p>
 
+<p align="center">
+<a href="https://metodo-simplex-calculadora.vercel.app/calculadora"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-simplex.svg" width="49%" alt="Simplex Paso a Paso - Simplex and Two-Phase calculator with exact fractions, step-by-step solutions and PDF export. Try the live demo." /></a>
+</p>
+
 <p align="center"><a href="https://inventario-one-beta.vercel.app">Try the Inventario live demo ↗</a></p>
 
 <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/divider.svg" width="100%" alt="" />
