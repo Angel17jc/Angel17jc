@@ -2,15 +2,15 @@
      role="img" aria-label="Angel Conforme">
   <title>Angel Conforme</title>
   <defs>
-    <!-- shine sweeping the letters from left to right -->
+    <!-- A two-second shine followed by six seconds of rest. -->
     <linearGradient id="shine" gradientUnits="userSpaceOnUse" x1="-300" y1="0" x2="-40" y2="0">
       <stop offset="0"    stop-color="#ffffff"/>
       <stop offset="0.42" stop-color="#ffffff"/>
       <stop offset="0.5"  stop-color="#ff7a7a"/>
       <stop offset="0.58" stop-color="#ffffff"/>
       <stop offset="1"    stop-color="#ffffff"/>
-      <animate attributeName="x1" from="-300" to="620" dur="4.5s" repeatCount="indefinite"/>
-      <animate attributeName="x2" from="-40"  to="880" dur="4.5s" repeatCount="indefinite"/>
+      <animate attributeName="x1" values="-300;620;620" keyTimes="0;.28;1" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="-40;880;880" keyTimes="0;.28;1" dur="8s" repeatCount="indefinite"/>
     </linearGradient>
 
     <!-- light theme variant: dark letters, red shine -->
@@ -20,8 +20,8 @@
       <stop offset="0.5"  stop-color="#e01b1b"/>
       <stop offset="0.58" stop-color="#1f1414"/>
       <stop offset="1"    stop-color="#1f1414"/>
-      <animate attributeName="x1" from="-300" to="620" dur="4.5s" repeatCount="indefinite"/>
-      <animate attributeName="x2" from="-40"  to="880" dur="4.5s" repeatCount="indefinite"/>
+      <animate attributeName="x1" values="-300;620;620" keyTimes="0;.28;1" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="-40;880;880" keyTimes="0;.28;1" dur="8s" repeatCount="indefinite"/>
     </linearGradient>
 
     <filter id="soft" x="-40%" y="-100%" width="180%" height="320%">
@@ -35,9 +35,9 @@
   </style>
 
   <g>
-    <!-- soft float: same breathing as the banner portrait -->
+    <!-- Gentle float with the same rhythm as the banner portrait. -->
     <animateTransform attributeName="transform" type="translate"
-                      values="0,0; 0,-3.5; 0,0" dur="5.5s"
+                      values="0,0; 0,-2; 0,0" dur="8s"
                       calcMode="spline" keyTimes="0;0.5;1"
                       keySplines=".45 0 .55 1;.45 0 .55 1" repeatCount="indefinite"/>
 
@@ -45,7 +45,7 @@
   <text x="310" y="58" text-anchor="middle" filter="url(#soft)"
         font-family="Verdana,DejaVu Sans,sans-serif" font-size="42"
         font-weight="bold" letter-spacing="3" fill="#ff1e1e" opacity=".45">ANGEL CONFORME
-    <animate attributeName="opacity" values=".28;.7;.28" dur="3.4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".24;.42;.24" dur="8s" repeatCount="indefinite"/>
   </text>
 
   <!-- name with the shine sweep -->
@@ -53,20 +53,12 @@
         font-family="Verdana,DejaVu Sans,sans-serif" font-size="42"
         font-weight="bold" letter-spacing="3" class="t">ANGEL CONFORME</text>
 
-  <!-- flash: same 12s cycle as the banner surge -->
-  <text x="310" y="58" text-anchor="middle" filter="url(#soft)"
-        font-family="Verdana,DejaVu Sans,sans-serif" font-size="42"
-        font-weight="bold" letter-spacing="3" fill="#ff6b6b" opacity="0">ANGEL CONFORME
-    <animate attributeName="opacity" values="0;.85;.1;0;0" keyTimes="0;.012;.06;.13;1"
-             dur="12s" repeatCount="indefinite"/>
-  </text>
-
   <!-- underline that draws in and out -->
   <rect x="310" y="76" width="0" height="2" fill="#ff2f2f">
-    <animate attributeName="width" values="0;360;360;0" keyTimes="0;.35;.8;1"
-             dur="6s" repeatCount="indefinite"/>
-    <animate attributeName="x" values="310;130;130;310" keyTimes="0;.35;.8;1"
-             dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="width" values="0;360;360;0;0" keyTimes="0;.24;.72;.92;1"
+             dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="x" values="310;130;130;310;310" keyTimes="0;.24;.72;.92;1"
+             dur="8s" repeatCount="indefinite"/>
   </rect>
   </g>
 </svg>

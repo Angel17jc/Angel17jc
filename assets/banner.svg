@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
      viewBox="0 0 1000 320" width="1000" height="320" role="img"
-     aria-label="Angel Conforme - animated banner">
-  <title>Angel Conforme</title>
+     aria-label="Angel Conforme - Software Developer. Animated circuits connect frontend, backend and database.">
+  <title>Angel Conforme - Software Developer</title>
+  <desc>Red circuit pulses connect frontend, backend and database beneath the developer title.</desc>
   <defs>
     <clipPath id="frame"><rect x="0" y="0" width="1000" height="320" rx="16"/></clipPath>
 
@@ -36,8 +37,8 @@
       <stop offset="0.5"  stop-color="#ff7a7a"/>
       <stop offset="0.58" stop-color="#ffffff"/>
       <stop offset="1"    stop-color="#ffffff"/>
-      <animate attributeName="x1" from="150" to="1000" dur="5.2s" repeatCount="indefinite"/>
-      <animate attributeName="x2" from="410" to="1260" dur="5.2s" repeatCount="indefinite"/>
+      <animate attributeName="x1" values="150;1000;1000" keyTimes="0;.28;1" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="410;1260;1260" keyTimes="0;.28;1" dur="8s" repeatCount="indefinite"/>
     </linearGradient>
 
     <!-- disc behind the clover -->
@@ -94,9 +95,9 @@
 
     <!-- ember pulsing behind the portrait -->
     <ellipse cx="208" cy="160" rx="190" ry="150" fill="url(#emberGlow)">
-      <animate attributeName="opacity" values=".45;.9;.45" dur="3.4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".45;.7;.45" dur="8s" repeatCount="indefinite"/>
       <animateTransform attributeName="transform" type="scale" additive="sum"
-                        values="1;1.07;1" dur="3.4s" repeatCount="indefinite"/>
+                        values="1;1.035;1" dur="8s" repeatCount="indefinite"/>
     </ellipse>
 
     <!-- gradient separating the portrait from the text -->
@@ -106,7 +107,7 @@
     <g>
       <!-- vertical float -->
       <animateTransform attributeName="transform" type="translate"
-                        values="0,0; 0,-9; 0,0" dur="5.5s"
+                        values="0,0; 0,-5; 0,0" dur="8s"
                         calcMode="spline" keyTimes="0;0.5;1"
                         keySplines=".45 0 .55 1;.45 0 .55 1" repeatCount="indefinite"/>
       <!-- tilt: horizontal scale + skew = fake 3D turn -->
@@ -173,21 +174,44 @@
     <g filter="url(#textGlow)">
       <text x="452" y="150" font-family="Verdana,DejaVu Sans,sans-serif" font-size="29"
             font-weight="bold" fill="url(#titleShine)" letter-spacing="3.4">SOFTWARE DEVELOPER
-        <animate attributeName="opacity" values=".85;1;.85" dur="4.6s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".96;1;.96" dur="8s" repeatCount="indefinite"/>
       </text>
     </g>
     <rect x="452" y="170" width="0" height="2" fill="#ff2f2f">
-      <animate attributeName="width" values="0;420;420;0" keyTimes="0;.35;.8;1"
-               dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="width" values="0;420;420;0;0" keyTimes="0;.24;.72;.92;1"
+               dur="8s" repeatCount="indefinite"/>
     </rect>
     <text x="454" y="202" font-family="Verdana,DejaVu Sans,sans-serif" font-size="14"
           fill="#c9b8b8" letter-spacing="1.0">Frontend &#183; Backend &#183; Full Stack &#183; Cloud &#183; DevOps</text>
 
-    <!-- the whole frame lights up for a split second -->
-    <rect width="1000" height="320" fill="#ff5252" opacity="0">
-      <animate attributeName="opacity" values="0;.14;0;0" keyTimes="0;.012;.07;1"
-               dur="12.0s" repeatCount="indefinite"/>
-    </rect>
+    <!-- Sequential circuit pulses: frontend -> backend -> database, then rest. -->
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path id="frontend-backend" d="M 466 250 H 548 L 570 270 H 662" stroke="#6b2020" stroke-width="1.5"/>
+      <path d="M 466 250 H 548 L 570 270 H 662" stroke="#ff6565" stroke-width="2" pathLength="100" stroke-dasharray="12 108" stroke-dashoffset="12" opacity="0">
+        <animate attributeName="stroke-dashoffset" values="12;-100;-100" keyTimes="0;.28;1" dur="8s" begin="0.0s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;.02;.24;.28;1" dur="8s" begin="0.0s" repeatCount="indefinite"/>
+      </path>
+      <path id="backend-database" d="M 662 270 H 752 L 774 250 H 870" stroke="#6b2020" stroke-width="1.5"/>
+      <path d="M 662 270 H 752 L 774 250 H 870" stroke="#ff6565" stroke-width="2" pathLength="100" stroke-dasharray="12 108" stroke-dashoffset="12" opacity="0">
+        <animate attributeName="stroke-dashoffset" values="12;-100;-100" keyTimes="0;.28;1" dur="8s" begin="2.24s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;.02;.24;.28;1" dur="8s" begin="2.24s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    <circle cx="466" cy="250" r="4" fill="#170707" stroke="#ff6565" stroke-width="1.5"/>
+    <circle cx="466" cy="250" r="7" fill="#ff4d4d" opacity="0">
+      <animate attributeName="opacity" values="0;.55;0;0" keyTimes="0;.05;.16;1" dur="8s" begin="0.0s" repeatCount="indefinite"/>
+    </circle>
+    <text x="466" y="272" text-anchor="middle" font-family="Verdana,DejaVu Sans,sans-serif" font-size="9" letter-spacing="1.5" fill="#c9a0a0">FRONTEND</text>
+    <circle cx="662" cy="270" r="4" fill="#170707" stroke="#ff6565" stroke-width="1.5"/>
+    <circle cx="662" cy="270" r="7" fill="#ff4d4d" opacity="0">
+      <animate attributeName="opacity" values="0;.55;0;0" keyTimes="0;.05;.16;1" dur="8s" begin="2.24s" repeatCount="indefinite"/>
+    </circle>
+    <text x="662" y="292" text-anchor="middle" font-family="Verdana,DejaVu Sans,sans-serif" font-size="9" letter-spacing="1.5" fill="#c9a0a0">BACKEND</text>
+    <circle cx="870" cy="250" r="4" fill="#170707" stroke="#ff6565" stroke-width="1.5"/>
+    <circle cx="870" cy="250" r="7" fill="#ff4d4d" opacity="0">
+      <animate attributeName="opacity" values="0;.55;0;0" keyTimes="0;.05;.16;1" dur="8s" begin="4.48s" repeatCount="indefinite"/>
+    </circle>
+    <text x="870" y="272" text-anchor="middle" font-family="Verdana,DejaVu Sans,sans-serif" font-size="9" letter-spacing="1.5" fill="#c9a0a0">DATABASE</text>
 
     <rect width="1000" height="320" fill="url(#vignette)"/>
     <rect width="1000" height="320" fill="none" stroke="#7a1414" stroke-width="2" rx="16">
