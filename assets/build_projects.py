@@ -63,7 +63,7 @@ PROJECTS = [
     },
 ]
 
-CHAR_W = 6.9          # average width of an 11px Verdana character
+CHAR_W = 6.9          # average width of an 11px Trebuchet MS character
 CHIP_PAD = 9
 CHIP_GAP = 6
 
@@ -130,7 +130,7 @@ TPL = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W
   </defs>
 
   <style>
-    text  {{ font-family: Verdana, 'DejaVu Sans', sans-serif; }}
+    text  {{ font-family: 'Trebuchet MS', 'Segoe UI', 'DejaVu Sans', sans-serif; }}
     .name {{ font-size: 21px; font-weight: bold; letter-spacing: 1px; }}
     .desc {{ fill: #c9b8b8; font-size: 12.5px; }}
     .chip {{ fill: #ff8a8a; font-size: 11px; }}

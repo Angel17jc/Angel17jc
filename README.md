@@ -59,17 +59,21 @@ architecture and maintainability.
 <img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/title-projects.svg" height="48" alt="Featured Projects" />
 
 <p align="center">
-<a href="https://github.com/Angel17jc/AsistControl"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-asistcontrol.svg" width="49%" alt="AsistControl - attendance platform synced with biometric devices" /></a>
-<a href="https://github.com/Angel17jc/Inventario"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-inventario.svg" width="49%" alt="Inventario - multi-tenant inventory and store credit app" /></a>
+<a href="https://github.com/Angel17jc/AsistControl"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-asistcontrol.svg" width="48%" alt="AsistControl - attendance platform synced with biometric devices" /></a>
+<a href="https://github.com/Angel17jc/Inventario"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-inventario.svg" width="48%" alt="Inventario - multi-tenant inventory and store credit app" /></a>
 </p>
 
-<p align="center">
-<a href="https://github.com/Angel17jc/Enertech"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-enertech.svg" width="49%" alt="Enertech - accessible energy consumption tracker" /></a>
-<a href="https://github.com/Angel17jc/splitfair"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-splitfair.svg" width="49%" alt="SplitFair - shared expenses with debt simplification" /></a>
-</p>
+<br/>
 
 <p align="center">
-<a href="https://metodo-simplex-calculadora.vercel.app/calculadora"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-simplex.svg" width="49%" alt="Simplex Paso a Paso - Simplex and Two-Phase calculator with exact fractions, step-by-step solutions and PDF export. Try the live demo." /></a>
+<a href="https://github.com/Angel17jc/Enertech"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-enertech.svg" width="48%" alt="Enertech - accessible energy consumption tracker" /></a>
+<a href="https://github.com/Angel17jc/splitfair"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-splitfair.svg" width="48%" alt="SplitFair - shared expenses with debt simplification" /></a>
+</p>
+
+<br/>
+
+<p align="center">
+<a href="https://metodo-simplex-calculadora.vercel.app/calculadora"><img src="https://raw.githubusercontent.com/Angel17jc/Angel17jc/main/assets/project-simplex.svg" width="48%" alt="Simplex Paso a Paso - Simplex and Two-Phase calculator with exact fractions, step-by-step solutions and PDF export. Try the live demo." /></a>
 </p>
 
 <p align="center"><a href="https://inventario-one-beta.vercel.app">Try the Inventario live demo ↗</a></p>
