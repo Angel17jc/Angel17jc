@@ -179,7 +179,7 @@
     <rect x="599.5" y="262" width="1" height="72" fill="#ff2f2f" opacity=".2"/>
 
     <!-- flame next to the current streak, flickering -->
-    <g transform="translate(104 281)">
+    <g transform="translate(114 281)">
       <path d="M0 -15 C7 -6 11 1 7 9 C5 13 -5 13 -7 9 C-10 2 -5 -3 0 -15 Z" fill="url(#flame)"
             filter="url(#textGlow)">
         <animateTransform attributeName="transform" type="scale"
@@ -192,7 +192,7 @@
 
     <g>
       <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.600;1" dur="1.50s" fill="freeze"/>
-      <text x="150" y="292" class="big" text-anchor="middle" filter="url(#textGlow)">12</text>
+      <text x="150" y="292" class="big" text-anchor="middle" filter="url(#textGlow)">0</text>
       <text x="150" y="312" class="unit" text-anchor="middle">days</text>
       <text x="150" y="332" class="cap" text-anchor="middle">CURRENT STREAK</text>
     </g>
